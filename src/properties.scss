@@ -1,0 +1,25 @@
+@mixin animate-hover {
+    cursor: pointer;
+    transition: all .3s ease;
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+}
+
+@mixin font-dmsans {
+    font-family: 'DM Sans', sans-serif;
+}
+
+@mixin lgt-modal-properties{
+    position: fixed;
+    left: 0;
+    top:0;
+    right: 0;
+    bottom: 0;
+    background-color: $lgt-modal-trans-bg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}

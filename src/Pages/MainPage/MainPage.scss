@@ -1,0 +1,33 @@
+*{
+    box-sizing: border-box;
+}
+
+
+.main-page-div{
+    display: inline-block;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+}
+
+
+.left-div-main-page{
+    position: relative;
+    left: 0;
+    top: 0px;
+    display: inline-block;
+    width: 25vw;
+    z-index: 1;
+}
+
+.right-div-main-page{
+  //  margin-left: 20px;
+    top: 0px;
+    position: relative;
+    display: inline-block;
+    right: 2px;
+    width: 75vw;
+    height: 100vh;
+    z-index: -1px;
+}

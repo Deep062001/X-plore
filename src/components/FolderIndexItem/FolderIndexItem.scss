@@ -1,0 +1,22 @@
+@import '../../variables.scss';
+@import '../../properties.scss';
+
+.folder-index-item{
+    background-color: $lgt-left-non-active-folder-bg;
+    color: $lgt-non-active-text-icon;
+    border: solid 1px $lgt-left-non-active-folder-bg;
+    display: flex;
+    flex-direction: row;
+    padding: 8px 10px;
+    border-radius: 4px;
+    width: 100%;
+    gap: 10px;
+    white-space: nowrap;
+    margin: 12px 0px;
+    overflow-x: auto;
+    @include animate-hover;
+}
+
+.folder-index-item:hover{
+    border: solid 1px $lgt-non-active-text-icon;
+}
