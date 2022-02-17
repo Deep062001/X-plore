@@ -5,8 +5,8 @@ import './App.scss';
 
 const App = () => {
   return <div>
-  {/* <MainPage/> */}
-  <HomePage/>
+  <MainPage/>
+  {/* <HomePage/> */}
   </div>;
 };
 

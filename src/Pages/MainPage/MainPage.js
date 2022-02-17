@@ -5,17 +5,19 @@ import EditFileModal from '../../components/EditFileModal/EditFileModal';
 import Header from '../../components/Header/Header';
 import LeftExplorer from '../../components/LeftExplorer/LeftExplorer';
 import PinModal from '../../components/PinModal/PinModal';
+import SetNewPinModal from '../../components/SetNewPinModal/SetNewPinModal';
 import './MainPage.scss';
 
 const MainPage = () => {
   return (
     <div className='main-page-div'>      
-        <div className='left-div-main-page'>
+        {/* <div className='left-div-main-page'>
             <LeftExplorer/>
         </div>
         <div className='right-div-main-page'>
             <Header/>
-        </div>
+        </div> */}
+        <SetNewPinModal/>
 
         {/* <PinModal/> */}
         {/* <AddFileFolderModal/> */}
