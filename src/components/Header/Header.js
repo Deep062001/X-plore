@@ -7,12 +7,17 @@ import './Header.scss';
 import AddDropdown from '../AddDropdown/AddDropdown';
 
 
-const Header = () => {
+const Header = (props) => {
     const [dropdown , setDropdown]=useState(false);
 
     function showDropdown(){
         setDropdown(!dropdown);
         console.log("Clicked");
+    }
+
+    function handleElementAddedName(name){
+        props.showAddFileFolderModalFunc(name);
+        showDropdown();
     }
 
 
@@ -29,8 +34,8 @@ const Header = () => {
             <div className='btn-div'>
                 <button className='btn-mode'><LightModeOutlinedIcon/> Light Mode</button>
                 <button className='btn-icons' onClick={showDropdown}><AddCircleOutlineOutlinedIcon/></button>   
-                {dropdown && <AddDropdown/> }
-                <button className='btn-icons'><SettingsOutlinedIcon/></button>
+                {dropdown && <AddDropdown showAddFileFolderModalFunc={handleElementAddedName}/> }
+                <button className='btn-icons' onClick={props.showChangePinFunc}><SettingsOutlinedIcon/></button>
             </div>
         </div>
         <div className='bottom-path-div'>hh/sddsa/djd</div>

@@ -1,8 +1,8 @@
 import React from 'react'
 import './PinModal.scss'
-const PinModal = () => {
+const PinModal = (props) => {
   return (
-    <div className='modal'>
+    <div className='modal' onClick={props.showPinModalFunc}>
     <div className='modal-div'>
     <h3>Enter Account Pin</h3>
     <form>

@@ -4,13 +4,13 @@ import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 
 
-const SetNewPinModal = () => {
+const SetNewPinModal = (props) => {
     const [passVisisble,setPassVisible]=useState(false);
     const [confirmPassVisisble,setConfirmPassVisible]=useState(false);
 
 
   return (
-    <div className='modal'>
+    <div className='modal' onClick={props.showChangePinFunc}>
     <div className='set-pin-modal-div'>
     <h3>Set Pin </h3>
       <form>
