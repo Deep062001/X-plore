@@ -9,6 +9,7 @@ import PinModal from '../../components/PinModal/PinModal';
 import SetNewPinModal from '../../components/SetNewPinModal/SetNewPinModal';
 import { Resizable } from "re-resizable";
 import './MainPage.scss';
+import FolderElement from '../../components/FolderElement/FolderElement';
 
 const MainPage = () => {
   const [showPinModal,setShowPinModal]=useState(false);
@@ -34,9 +35,9 @@ const MainPage = () => {
   return (
     <div className='main-page-div'>      
         <div className='left-div-main-page'>
-            <Resizable>
+          <Resizable>
             <LeftExplorer showPinModalFunc={handleShowPinModal} showAddFileFolderModalFunc={handleShowAddFileFolderModal}/>
-            </Resizable>
+          </Resizable>
         </div>
         <div className='right-div-main-page'>
           <div>
@@ -46,9 +47,17 @@ const MainPage = () => {
             <FileElement/>
             <FileElement/>
             <FileElement/>
+            <FolderElement/>
+            <FolderElement/>
+            <FileElement/>
+            <FolderElement/>
+            <FileElement/>
+            <FileElement/>
+            <FileElement/>
+            <FileElement/>
+            <FileElement/>
           </div>
         </div>
-        {/* <SetNewPinModal/> */}
 
         {showPinModal&&<PinModal showPinModalFunc={handleShowPinModal}/>}
         {showAddFileFolderModal&&<AddFileFolderModal showAddFileFolderModalFunc={handleShowAddFileFolderModal} element={element}/>}

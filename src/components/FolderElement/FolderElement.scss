@@ -1,10 +1,10 @@
 @import '../../variables.scss';
 @import '../../properties.scss';
 
-.file-outer-div{
+.folder-outer-div{
     display: inline-block;
-    margin: 20px ;
-    .file-element-div{
+    margin: 20px;
+    .folder-element-div{
         display: flex;
         flex-direction: column;
         //justify-content: center;

@@ -1,9 +1,13 @@
 import React from 'react';
 import FileIcon from '../../assets/FileIcon.svg';
-const FileElement = () => {
+import './FileElement.scss';
+const FileElement = (props) => {
   return (
-    <div>
-        <img src={FileIcon}/>
+    <div className='file-outer-div'>
+    <div className='file-element-div'>
+        <img src={FileIcon} alt="file"/>
+        <p>File Name</p>
+    </div>
     </div>
   )
 }
