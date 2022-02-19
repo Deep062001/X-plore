@@ -4,7 +4,8 @@
 
 
 .main-page-div{
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
     margin: 0;
     width: 100vw;
     height: 100vh;
@@ -13,21 +14,13 @@
 
 
 .left-div-main-page{
-    position: relative;
-    left: 0;
-    top: 0px;
-    display: inline-block;
-    width: 25vw;
     z-index: 1;
 }
 
 .right-div-main-page{
   //  margin-left: 20px;
-    top: 0px;
-    position: relative;
-    display: inline-block;
-    right: 2px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
     width: 75vw;
-    height: 100vh;
-    z-index: -1px;
 }
