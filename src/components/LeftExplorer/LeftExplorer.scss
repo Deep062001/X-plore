@@ -64,3 +64,68 @@
     }
 }
 
+.left-explorer-dt{
+    
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    background-color: $drk-left-explorer-bg;
+    padding: 40px;
+    justify-content: space-between;
+
+    .add-file-folder-buttons{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: 10px;
+        margin: 35px 0;
+        .btn-add{
+            font-family: 'DM Sans', sans-serif;
+            border: solid;
+            background-color: $drk-left-explorer-bg;
+            padding: 5px 15px;
+            border-radius: 4px;
+            border-width: 1px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            color: $drk-add-buttons;
+            border-color: $drk-add-buttons-border;
+            font-weight: bold;
+            @include animate-hover;
+        }
+
+        .btn-add:hover{
+              background-color: $drk-left-non-active-folder-bg;       
+        }
+    }
+
+    .btn-lock{
+        width: 100%;
+        font-family: 'DM Sans', sans-serif;
+        border: solid;
+        background-color: $lgt-add-buttons;
+        padding: 5px 15px;
+        border-radius: 4px;
+        border-width: 1px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        color: #FFFFFF;
+        border-color: $lgt-add-buttons;
+        font-weight: bold;
+        @include animate-hover;
+    }
+
+    .btn-lock:hover{
+        border-color: #FFFFFF;
+        background-color: $lgt-lock-btn-hover;       
+    }
+}
+
+

@@ -30,7 +30,7 @@ const PinModal = (props) => {
 
   // onClick={props.showPinModalFunc}
   return (
-    <div className={isLight?'modal':'modal-dt'}>
+    <div className={isLight?'pin-modal':'pin-modal-dt'}>
     <div className='modal-div'>
     <h3>Enter Account Pin</h3>
     <form autoComplete="off">

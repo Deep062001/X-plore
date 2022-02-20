@@ -5,7 +5,7 @@ import context from '../../Context';
 const AddFileFolderModal = (props) => {
   const isLight=useContext(context);
   return (
-    <div className={isLight?'modal':'modal-dk'} onClick={props.showAddFileFolderModalFunc}>
+    <div className={isLight?'add-modal':'add-modal-dt'} onClick={props.showAddFileFolderModalFunc}>
     <div className='folder-file-modal-div'>
     <h3>Create {props.element}</h3>
       <form>

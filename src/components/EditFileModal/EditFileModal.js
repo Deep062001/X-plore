@@ -5,7 +5,7 @@ import context from '../../Context';
 const EditFileModal = () => {
   const isLight=useContext(context);
   return (
-    <div className={isLight?'modal':'modal-dt'}>  
+    <div className={isLight?'edit-file-modal':'edit-file-modal-dt'}>  
       <div className='edit-file-modal-div'>
         <h3>Edit File</h3>
         <form>

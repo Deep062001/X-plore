@@ -15,8 +15,26 @@
     margin: 12px 0px;
     overflow-x: auto;
     @include animate-hover;
+    &:hover{
+        border: solid 1px $lgt-non-active-text-icon;
+    }    
 }
 
-.folder-index-item:hover{
-    border: solid 1px $lgt-non-active-text-icon;
+.folder-index-item-dt{
+    background-color: $drk-left-non-active-folder-bg;
+    color: $drk-non-active-text-icon;
+    border: solid 1px $drk-left-non-active-folder-bg;
+    display: flex;
+    flex-direction: row;
+    padding: 8px 10px;
+    border-radius: 4px;
+    width: 100%;
+    gap: 10px;
+    white-space: nowrap;
+    margin: 12px 0px;
+    overflow-x: auto;
+    @include animate-hover;
+    &:hover{
+        border: solid 1px $drk-non-active-text-icon;
+    }    
 }

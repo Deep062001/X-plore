@@ -13,7 +13,7 @@ const SetNewPinModal = (props) => {
 
 
   return (
-    <div className={isLight?'modal':'modal-dt'} onClick={props.showChangePinFunc}>
+    <div className={isLight?'new-pin-modal':'new-pin-modal-dt'} onClick={props.showChangePinFunc}>
     <div className='set-pin-modal-div'>
     <h3>Set New Pin </h3>
       <form>

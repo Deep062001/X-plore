@@ -6,7 +6,7 @@ import context from '../../Context';
 const FileElement = (props) => {
   const isLight=useContext(context);
   return (
-    <div className={isLight?'file-outer-div':'file-outer-div-dk'}>
+    <div className={isLight?'file-outer-div':'file-outer-div-dt'}>
     <div className='file-element-div'>
         <img src={FileIcon} alt="file"/>
         <p>File Name</p>

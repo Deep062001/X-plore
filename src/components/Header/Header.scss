@@ -107,3 +107,122 @@
     }
     
 }
+
+.header-div-dt{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 20%;
+    gap: 30px;
+    background-color: $drk-bg;
+    padding: 40px;
+    justify-content: space-between;
+
+    .top-btn-search{
+        display: flex;
+        flex-direction: row;
+        background-color: $drk-bg;
+        justify-content: space-between;
+
+        .search-div{
+            padding: 5px;
+            border: solid 1px $drk-add-buttons-border;
+            border-radius: 4px;
+            form{
+                display: flex;
+                flex-direction: row;
+                background-color: $drk-bg;
+                justify-content: center;
+                button{
+                    background-color: $drk-bg;
+                    border: 0;
+                    color: $drk-search-text;
+                }
+    
+                input{
+                    background-color: $drk-bg;
+                    width: 400px;
+                    border: 0;
+                    font-size: 16px;
+                    font-family: 'DM Sans', sans-serif;
+                    color: #ffffff;
+                    font-weight: 500;
+                }
+
+                input:focus{
+                   outline: none;
+                }
+    
+                input::placeholder{
+                    font-weight: 400;
+                    font-size: 16px;
+                    font-family: 'DM Sans', sans-serif;
+                    color: $drk-search-text;
+                }
+            }
+
+            &:focus-within{
+                color: #ffffff;
+                border-color: #ffffff;
+                button{
+                    color: #ffffff;
+                }
+            }
+
+
+        }
+
+        .btn-div{
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            .btn-mode{
+                font-family: 'DM Sans', sans-serif;
+                border: solid;
+                background-color: $drk-bg;
+                padding: 5px 15px;
+                border-radius: 4px;
+                border-width: 1px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
+                color: $drk-add-buttons;
+                border-color: $drk-add-buttons-border;
+                font-weight: bold;
+                @include animate-hover;
+            }
+    
+            .btn-mode:hover{
+                  background-color: $drk-left-non-active-folder-bg;       
+            }
+            
+            .btn-icons{
+                font-family: 'DM Sans', sans-serif;
+                background-color: $drk-bg;
+                padding: 5px 15px;
+                border: solid 1px $drk-add-buttons-border;
+                border-radius: 4px;
+                color: $drk-non-active-text-icon;
+                font-weight: bold;
+                @include animate-hover;
+            }
+
+            .btn-icons:hover{
+                background-color: $drk-left-non-active-folder-bg;
+            }
+
+
+
+        }
+        
+    }
+
+    hr{
+        border: none;
+        border-top: $lgt-left-non-active-folder-bg 1px solid;
+        width: 100%;
+    }
+    
+}

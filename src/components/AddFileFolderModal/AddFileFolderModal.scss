@@ -1,64 +1,127 @@
 @import '../../variables.scss';
 @import '../../properties.scss';
 
-.modal{
+.add-modal{
     @include lgt-modal-properties;
+    .folder-file-modal-div{
+        display: inline-block;
+        text-align: center;
+        border-radius: 10px;
+        background-color: #ffffff;
+        border: 1px solid $lgt-left-non-active-folder-bg;
+        padding: 70px 50px;
+        h3{
+            margin:0 0 30px 0;
+            font-size: 18px;
+        }
+    
+        p{
+            color: $lgt-non-active-text-icon;
+            font-weight: 500;
+            text-align: left;
+            font-size: 16px;
+        }
+    
+        input{
+            border: 1px solid $lgt-left-non-active-folder-bg;
+            padding: 7px 12px;
+            border-radius: 4px;
+            font-size: 16px;
+            text-align: left;
+            width: 300px;
+    
+            &:focus{
+                border: 2px solid $lgt-modal-btns;
+                outline: none;
+            }
+        }
+    
+        
+    
+        .modal-submit-btn{
+            margin-top: 30px;
+            font-family: 'DM Sans', sans-serif;
+            border: solid;
+            font-size: 16px;
+            background-color: $lgt-modal-btns;
+            padding: 5px 25px;
+            border-radius: 4px;
+            border-width: 3px;
+            color: #FFFFFF;
+            border-color: $lgt-modal-btns;
+            font-weight: 500;
+            @include animate-hover;
+        }
+    
+        .modal-submit-btn:hover{
+            background-color: $lgt-modal-btns-hover;
+    
+        }
+    
+        
+    }
+
 }
 
-.folder-file-modal-div{
-    display: inline-block;
-    text-align: center;
-    border-radius: 10px;
-    background-color: #ffffff;
-    border: 1px solid $lgt-left-non-active-folder-bg;
-    padding: 70px 50px;
-    h3{
-        margin:0 0 30px 0;
-        font-size: 18px;
-    }
 
-    p{
-        color: $lgt-non-active-text-icon;
-        font-weight: 500;
-        text-align: left;
-        font-size: 16px;
-    }
-
-    input{
+.add-modal-dt{
+    @include lgt-modal-properties;
+    .folder-file-modal-div{
+        display: inline-block;
+        text-align: center;
+        border-radius: 10px;
+        background-color: #ffffff;
         border: 1px solid $lgt-left-non-active-folder-bg;
-        padding: 7px 12px;
-        border-radius: 4px;
-        font-size: 16px;
-        text-align: left;
-        width: 300px;
-
-        &:focus{
-            border: 2px solid $lgt-modal-btns;
-            outline: none;
+        padding: 70px 50px;
+        h3{
+            margin:0 0 30px 0;
+            font-size: 18px;
         }
-    }
-
     
-
-    .modal-submit-btn{
-        margin-top: 30px;
-        font-family: 'DM Sans', sans-serif;
-        border: solid;
-        font-size: 16px;
-        background-color: $lgt-modal-btns;
-        padding: 5px 25px;
-        border-radius: 4px;
-        border-width: 3px;
-        color: #FFFFFF;
-        border-color: $lgt-modal-btns;
-        font-weight: 500;
-        @include animate-hover;
-    }
-
-    .modal-submit-btn:hover{
-        background-color: $lgt-modal-btns-hover;
-
-    }
-
+        p{
+            color: $lgt-non-active-text-icon;
+            font-weight: 500;
+            text-align: left;
+            font-size: 16px;
+        }
     
+        input{
+            border: 1px solid $lgt-left-non-active-folder-bg;
+            padding: 7px 12px;
+            border-radius: 4px;
+            font-size: 16px;
+            text-align: left;
+            width: 300px;
+    
+            &:focus{
+                border: 2px solid $lgt-modal-btns;
+                outline: none;
+            }
+        }
+    
+        
+    
+        .modal-submit-btn{
+            margin-top: 30px;
+            font-family: 'DM Sans', sans-serif;
+            border: solid;
+            font-size: 16px;
+            background-color: $lgt-modal-btns;
+            padding: 5px 25px;
+            border-radius: 4px;
+            border-width: 3px;
+            color: #FFFFFF;
+            border-color: $lgt-modal-btns;
+            font-weight: 500;
+            @include animate-hover;
+        }
+    
+        .modal-submit-btn:hover{
+            background-color: $lgt-modal-btns-hover;
+    
+        }
+    
+        
+    }
+
 }

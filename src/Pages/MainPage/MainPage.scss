@@ -1,3 +1,6 @@
+@import '../../variables.scss';
+@import '../../properties.scss';
+
 *{
     box-sizing: border-box;
 }
@@ -12,9 +15,18 @@
     background-color: #ffffff;
 }
 
+.main-page-div-dt{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $drk-bg;
+}
+
 
 .left-div-main-page{
-    z-index: 1;
+    
 }
 
 .right-div-main-page{

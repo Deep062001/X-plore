@@ -11,10 +11,29 @@
         align-items: center;
     
         p{
-            margin-top: 5px;
+            margin-top: 7px;
             color: $lgt-primary-text;
             font-weight: 500;
-            font-size: 14px;
+            font-size: 13px;
+        }
+    }
+}
+
+
+.file-outer-div-dt{
+    display: inline-block;
+    margin: 20px ;
+    .file-element-div{
+        display: flex;
+        flex-direction: column;
+        //justify-content: center;
+        align-items: center;
+    
+        p{
+            margin-top: 7px;
+            color: $drk-primary-text;
+            font-weight: 500;
+            font-size: 13px;
         }
     }
 }
