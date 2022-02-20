@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './EditFileModal.scss';
 import context from '../../Context';
 
 const EditFileModal = () => {
+  const isLight=useContext(context);
   return (
-    <div className='modal'>  
+    <div className={isLight?'modal':'modal-dt'}>  
       <div className='edit-file-modal-div'>
         <h3>Edit File</h3>
         <form>

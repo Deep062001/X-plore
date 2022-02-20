@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
@@ -9,6 +9,7 @@ import context from '../../Context';
 
 
 const Header = (props) => {
+    const isLight=useContext(context);
     const [dropdown , setDropdown]=useState(false);
 
     function showDropdown(){
@@ -28,7 +29,7 @@ const Header = (props) => {
 
 
   return (
-    <div className='header-div'>
+    <div className={isLight?'header-div':'header-div-dt'}>
         <div className='top-btn-search'>
             <div className='search-div'>
                 <form>

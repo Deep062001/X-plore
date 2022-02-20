@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import AppLogo from '../../assets/AppLogo.js';
 import './LeftExplorer.scss';
 import CreateNewFolderOutlinedIcon from '@mui/icons-material/CreateNewFolderOutlined';
@@ -8,6 +8,7 @@ import FolderIndex from '../FolderIndex/FolderIndex.js';
 import context from '../../Context';
 
 const LeftExplorer = (props) => {
+  const isLight=useContext(context);
   function handleElementAddedName(event){
     const name=event.target.name;
     props.showAddFileFolderModalFunc(name);
@@ -15,7 +16,7 @@ const LeftExplorer = (props) => {
 
 
   return (
-    <div className='left-explorer'>
+    <div className={isLight?'left-explorer':'left-explorer-dt'}>
       <div className='upper-part'>
         <AppLogo/>
         <div className='add-file-folder-buttons'>

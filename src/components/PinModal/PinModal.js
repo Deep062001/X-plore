@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import './PinModal.scss';
 import context from '../../Context';
 
 const PinModal = (props) => {
+  const isLight=useContext(context);
   const [pinArr,setPinArr]=useState({
     "0": "",
     "1": "",
@@ -29,7 +30,7 @@ const PinModal = (props) => {
 
   // onClick={props.showPinModalFunc}
   return (
-    <div className='modal' >
+    <div className={isLight?'modal':'modal-dt'}>
     <div className='modal-div'>
     <h3>Enter Account Pin</h3>
     <form autoComplete="off">
