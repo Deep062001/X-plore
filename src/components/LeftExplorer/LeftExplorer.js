@@ -5,6 +5,7 @@ import CreateNewFolderOutlinedIcon from '@mui/icons-material/CreateNewFolderOutl
 import NoteAddOutlinedIcon from '@mui/icons-material/NoteAddOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import FolderIndex from '../FolderIndex/FolderIndex.js';
+import context from '../../Context';
 
 const LeftExplorer = (props) => {
   function handleElementAddedName(event){

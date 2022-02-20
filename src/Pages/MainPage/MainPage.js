@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import AddDropdown from '../../components/AddDropdown/AddDropdown';
 import AddFileFolderModal from '../../components/AddFileFolderModal/AddFileFolderModal';
 import EditFileModal from '../../components/EditFileModal/EditFileModal';
@@ -10,8 +10,10 @@ import SetNewPinModal from '../../components/SetNewPinModal/SetNewPinModal';
 import { Resizable } from "re-resizable";
 import './MainPage.scss';
 import FolderElement from '../../components/FolderElement/FolderElement';
+import context from '../../Context';
 
-const MainPage = () => {
+const MainPage = (props) => {
+  const isLight=useContext(context);
   const [showPinModal,setShowPinModal]=useState(false);
   const [showAddFileFolderModal, setShowAddFileFolderModal]=useState(false);
   const [showChangePinModal, setShowChangePinModal]=useState(false);
@@ -33,7 +35,7 @@ const MainPage = () => {
 
 
   return (
-    <div className='main-page-div'>      
+    <div className={isLight?'main-page-div':'main-page-div-dt'}>      
         <div className='left-div-main-page'>
           <Resizable>
             <LeftExplorer showPinModalFunc={handleShowPinModal} showAddFileFolderModalFunc={handleShowAddFileFolderModal}/>
@@ -41,7 +43,7 @@ const MainPage = () => {
         </div>
         <div className='right-div-main-page'>
           <div>
-            <Header showAddFileFolderModalFunc={handleShowAddFileFolderModal} showChangePinFunc={handleShowChangePinModal}/>
+            <Header showAddFileFolderModalFunc={handleShowAddFileFolderModal} showChangePinFunc={handleShowChangePinModal} changeTheme={props.changeTheme} />
           </div>
           <div>
             <FileElement/>

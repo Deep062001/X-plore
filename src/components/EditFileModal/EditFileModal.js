@@ -1,5 +1,6 @@
 import React from 'react';
 import './EditFileModal.scss';
+import context from '../../Context';
 
 const EditFileModal = () => {
   return (

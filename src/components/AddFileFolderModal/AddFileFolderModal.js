@@ -1,5 +1,6 @@
 import React from 'react';
 import './AddFileFolderModal.scss';
+import context from '../../Context';
 
 const AddFileFolderModal = (props) => {
   return (

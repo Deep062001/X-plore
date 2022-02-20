@@ -5,6 +5,7 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import './Header.scss';
 import AddDropdown from '../AddDropdown/AddDropdown';
+import context from '../../Context';
 
 
 const Header = (props) => {
@@ -20,6 +21,10 @@ const Header = (props) => {
         showDropdown();
     }
 
+    function handleChangeTheme(){
+        props.changeTheme();
+    }
+
 
 
   return (
@@ -32,7 +37,7 @@ const Header = (props) => {
                 </form>
             </div>
             <div className='btn-div'>
-                <button className='btn-mode'><LightModeOutlinedIcon/> Light Mode</button>
+                <button className='btn-mode' onClick={handleChangeTheme}><LightModeOutlinedIcon/> Light Mode</button>
                 <button className='btn-icons' onClick={showDropdown}><AddCircleOutlineOutlinedIcon/></button>   
                 {dropdown && <AddDropdown showAddFileFolderModalFunc={handleElementAddedName}/> }
                 <button className='btn-icons' onClick={props.showChangePinFunc}><SettingsOutlinedIcon/></button>

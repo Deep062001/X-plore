@@ -1,6 +1,8 @@
 import React from 'react';
 import FolderIcon from '../../assets/FolderIcon.svg';
 import './FolderElement.scss';
+import context from '../../Context';
+
 const FolderElement = (props) => {
   return (
     <div className='folder-outer-div'>

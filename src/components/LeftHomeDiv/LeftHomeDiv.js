@@ -1,6 +1,7 @@
 import React from 'react';
 import HomeFilePic from '../../assets/HomeFilePic';
-import './LeftHomeDiv.scss'
+import './LeftHomeDiv.scss';
+import context from '../../Context';
 
 const LeftHomeDiv = () => {
   return <div>

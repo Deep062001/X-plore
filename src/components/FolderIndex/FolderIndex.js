@@ -1,6 +1,7 @@
 import React from 'react';
 import FolderIndexItem from '../FolderIndexItem/FolderIndexItem';
 import './FolderIndex.scss';
+import context from '../../Context';
 
 
 const FolderIndex = () => {

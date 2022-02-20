@@ -1,6 +1,7 @@
 import React from 'react'
 import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
-import './FolderIndexItem.scss'
+import './FolderIndexItem.scss';
+import context from '../../Context';
 
 const FolderIndexItem = () => {
   return (

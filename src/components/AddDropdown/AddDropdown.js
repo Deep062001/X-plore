@@ -1,5 +1,7 @@
 import React from 'react';
 import './AddDropdown.scss';
+import context from '../../Context';
+
 const AddDropdown = (props) => {
   function handleClick(event){
     const name =event.target.name;

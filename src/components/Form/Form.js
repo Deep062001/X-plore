@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import './Form.scss'
+import './Form.scss';
+import context from '../../Context';;
+
 const Form = () => {
   const [pins,setPins]=useState({
     newPin:"",

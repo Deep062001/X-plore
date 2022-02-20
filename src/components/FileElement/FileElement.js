@@ -1,6 +1,8 @@
 import React from 'react';
 import FileIcon from '../../assets/FileIcon.svg';
 import './FileElement.scss';
+import context from '../../Context';
+
 const FileElement = (props) => {
   return (
     <div className='file-outer-div'>

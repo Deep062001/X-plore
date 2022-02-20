@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
-import './PinModal.scss'
+import './PinModal.scss';
+import context from '../../Context';
+
 const PinModal = (props) => {
   const [pinArr,setPinArr]=useState({
     "0": "",
