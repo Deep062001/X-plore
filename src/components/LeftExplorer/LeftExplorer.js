@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import AppLogo from '../../assets/AppLogo.js';
+import AppLogoLT from '../../assets/AppLogoLT.svg';
+import AppLogoDT from '../../assets/AppLogoDT.svg';
 import './LeftExplorer.scss';
 import CreateNewFolderOutlinedIcon from '@mui/icons-material/CreateNewFolderOutlined';
 import NoteAddOutlinedIcon from '@mui/icons-material/NoteAddOutlined';
@@ -18,7 +19,7 @@ const LeftExplorer = (props) => {
   return (
     <div className={isLight?'left-explorer':'left-explorer-dt'}>
       <div className='upper-part'>
-        <AppLogo/>
+        <img src={isLight?AppLogoLT:AppLogoDT} alt="cuvette"/>
         <div className='add-file-folder-buttons'>
           <button className='btn-add' onClick={handleElementAddedName} name="File"><NoteAddOutlinedIcon/>Add File</button>
           <button className='btn-add' onClick={handleElementAddedName} name="Folder"><CreateNewFolderOutlinedIcon/>Add Folder</button>
