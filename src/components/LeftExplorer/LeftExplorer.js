@@ -15,6 +15,10 @@ const LeftExplorer = (props) => {
     props.showAddFileFolderModalFunc(name);
   }
 
+  function handlePass(files){
+    props.passFiles(files);
+  }
+
 
   return (
     <div className={isLight?'left-explorer':'left-explorer-dt'}>
@@ -24,7 +28,7 @@ const LeftExplorer = (props) => {
           <button className='btn-add' onClick={handleElementAddedName} name="File"><NoteAddOutlinedIcon/>Add File</button>
           <button className='btn-add' onClick={handleElementAddedName} name="Folder"><CreateNewFolderOutlinedIcon/>Add Folder</button>
         </div>
-        <FolderIndex/>
+        <FolderIndex passFiles={handlePass}/>
       </div>
       <div className='bottom-part'>
         <button className='btn-lock' onClick={props.showPinModalFunc}><LockOutlinedIcon/> Lock Now</button>

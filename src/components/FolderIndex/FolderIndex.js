@@ -3,11 +3,13 @@ import FolderIndexItem from '../FolderIndexItem/FolderIndexItem';
 import './FolderIndex.scss';
 import context from '../../Context';
 import completeStructure from '../../CompleteStructure';
+import FileElement from '../FileElement/FileElement';
 
-const FolderIndex = () => {
+const FolderIndex = (props) => {
   const isLight=useContext(context);
-  const [idx,setIdx]=useState([]);
-  let index=[];
+  const [idxFolder,setIdxFolder]=useState([]);
+  let indexFolder=[];
+  let indexFile=[];
 
   function changeState(path){
     let element=completeStructure[path[0]];
@@ -17,38 +19,53 @@ const FolderIndex = () => {
     }
 
     element.isActive=(!element.isActive);
-    console.log(element);
 
-    if(index=[]){
+    if(indexFolder=[]){
       createIndex(completeStructure,0);
     };
-    
-    setIdx(index);
 
+    if(indexFile=[]){
+      console.log(element.childNodes);
+      showFiles(element.childNodes);
+    }
+
+    setIdxFolder(indexFolder);
+
+    props.passFiles(indexFile);
+
+  }
+
+  function showFiles(childNodes){
+    childNodes.forEach(function(item){
+      if(!item.isFolder){
+        indexFile.push(<FileElement key={item.id} name={item.name}/>);
+      }
+    })
+
+    console.log(indexFile);
   }
 
   function createIndex(folderArray, marginL){
     folderArray.forEach(function(item){
-      index.push(<FolderIndexItem key={item.id} name={item.name} marginL={marginL} path={item.path} isActive={item.isActive} changeState={changeState}/>);
-
-      if(item.childNodes.length>0 && item.isActive){
-        createIndex(item.childNodes,marginL+20);
+      if(item.isFolder){
+        indexFolder.push(<FolderIndexItem key={item.id} name={item.name} marginL={marginL} path={item.path} isActive={item.isActive} changeState={changeState}/>);
+        if(item.childNodes.length>0 && item.isActive){
+          createIndex(item.childNodes,marginL+20);
+        }
       }
     })
   }
 
   useEffect(()=>{
-    console.log("I am Called useEffect");
-      index=[];
       createIndex(completeStructure,0);
-      setIdx(index);
+      setIdxFolder(indexFolder);
   },[]);
 
   
   
   return (
     <div className={isLight?'folder-index':'folder-index-dt'}>
-        {idx}
+        {idxFolder}
         {/* <FolderIndexItem/>
         <FolderIndexItem/>
         <FolderIndexItem/>

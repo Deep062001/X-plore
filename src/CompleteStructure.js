@@ -16,6 +16,15 @@ const completeStructure= [
           content: "",
           childNodes: []
         },
+        {
+          name: "File1",
+          id: 2777,
+          path: [0,1],
+          isFolder: false,
+          isActive: false,
+          content: "lalalala",
+          childNodes: []
+        },
       ]
     },
     {
@@ -50,6 +59,15 @@ const completeStructure= [
               isFolder: true,
               isActive: false,
               content: "",
+              childNodes: []
+            },
+            {
+              name: "File-file",
+              id: 3752,
+              path: [1,0,2],
+              isFolder: false,
+              isActive: false,
+              content: "ddddddddddsdsds",
               childNodes: []
             },
           ]

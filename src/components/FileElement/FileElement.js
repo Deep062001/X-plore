@@ -9,7 +9,7 @@ const FileElement = (props) => {
     <div className={isLight?'file-outer-div':'file-outer-div-dt'}>
     <div className='file-element-div'>
         <img src={FileIcon} alt="file"/>
-        <p>File Name</p>
+        <p>{props.name}</p>
     </div>
     </div>
   )

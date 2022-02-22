@@ -18,6 +18,7 @@ const MainPage = (props) => {
   const [showAddFileFolderModal, setShowAddFileFolderModal]=useState(false);
   const [showChangePinModal, setShowChangePinModal]=useState(false);
   const [element,setElement]=useState("");
+  const [idxFile,setIdxFile]=useState([]);
   
   function handleShowPinModal(){
     setShowPinModal(prevShowPinModal=>!prevShowPinModal);
@@ -33,12 +34,17 @@ const MainPage = (props) => {
     setShowChangePinModal(prevShowChangePinModal=>!prevShowChangePinModal);
   }
 
+  function showFiles(indexFile){
+     setIdxFile(indexFile);
+     console.log(idxFile);
+  }
+
 
   return (
     <div className={isLight?'main-page-div':'main-page-div-dt'}>      
         <div className='left-div-main-page'>
           <Resizable>
-            <LeftExplorer showPinModalFunc={handleShowPinModal} showAddFileFolderModalFunc={handleShowAddFileFolderModal}/>
+            <LeftExplorer showPinModalFunc={handleShowPinModal} showAddFileFolderModalFunc={handleShowAddFileFolderModal} passFiles={showFiles}/>
           </Resizable>
         </div>
         <div className='right-div-main-page'>
@@ -46,7 +52,8 @@ const MainPage = (props) => {
             <Header showAddFileFolderModalFunc={handleShowAddFileFolderModal} showChangePinFunc={handleShowChangePinModal} changeTheme={props.changeTheme} />
           </div>
           <div>
-            <FileElement/>
+            {idxFile}
+            {/* <FileElement/>
             <FileElement/>
             <FileElement/>
             <FolderElement/>
@@ -57,7 +64,7 @@ const MainPage = (props) => {
             <FileElement/>
             <FileElement/>
             <FileElement/>
-            <FileElement/>
+            <FileElement/> */}
           </div>
         </div>
 
