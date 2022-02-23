@@ -1,4 +1,7 @@
 import React, { useContext, useState } from 'react'
+import { Resizable } from "re-resizable";
+import { v4 as uuidv4 } from 'uuid';
+import './MainPage.scss';
 import AddDropdown from '../../components/AddDropdown/AddDropdown';
 import AddFileFolderModal from '../../components/AddFileFolderModal/AddFileFolderModal';
 import EditFileModal from '../../components/EditFileModal/EditFileModal';
@@ -7,8 +10,6 @@ import Header from '../../components/Header/Header';
 import LeftExplorer from '../../components/LeftExplorer/LeftExplorer';
 import PinModal from '../../components/PinModal/PinModal';
 import SetNewPinModal from '../../components/SetNewPinModal/SetNewPinModal';
-import { Resizable } from "re-resizable";
-import './MainPage.scss';
 import FolderElement from '../../components/FolderElement/FolderElement';
 import completeStructure from '../../CompleteStructure';
 import MakeFileFolder from '../../csConstructor';
@@ -100,7 +101,8 @@ const MainPage = (props) => {
          element=element.childNodes[currPath[i]];
       }
       const elementPath= [...element.path, element.childNodes.length];
-      const newElement=new MakeFileFolder(2526,elementName,elementPath, isFolder, " ");
+      const id=uuidv4(); 
+      const newElement=new MakeFileFolder(id,elementName,elementPath, isFolder, " ");
       element.childNodes.push(newElement);
       console.log(prevCS);
       return prevCS;
