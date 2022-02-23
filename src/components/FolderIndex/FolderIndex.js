@@ -7,44 +7,13 @@ import FileElement from '../FileElement/FileElement';
 
 const FolderIndex = (props) => {
   const isLight=useContext(context);
-  const [idxFolder,setIdxFolder]=useState([]);
-  let indexFolder=[];
-  let indexFile=[];
-
   function changeState(path){
-    let element=completeStructure[path[0]];
-
-    for(let i=1;i<path.length;i++){
-      element=element.childNodes[path[i]];
-    }
-
-    element.isActive=(!element.isActive);
-
-    if(indexFolder=[]){
-      createIndex(completeStructure,0);
-    };
-
-    if(indexFile=[]){
-      console.log(element.childNodes);
-      showFiles(element.childNodes);
-    }
-
-    setIdxFolder(indexFolder);
-
-    props.passFiles(indexFile);
-
+    props.changeState(path);
   }
 
-  function showFiles(childNodes){
-    childNodes.forEach(function(item){
-      if(!item.isFolder){
-        indexFile.push(<FileElement key={item.id} name={item.name}/>);
-      }
-    })
 
-    console.log(indexFile);
-  }
 
+  let indexFolder=[];
   function createIndex(folderArray, marginL){
     folderArray.forEach(function(item){
       if(item.isFolder){
@@ -56,24 +25,20 @@ const FolderIndex = (props) => {
     })
   }
 
-  useEffect(()=>{
-      createIndex(completeStructure,0);
-      setIdxFolder(indexFolder);
-  },[]);
+  function temp(){
+    if(indexFolder=[]){
+        createIndex(props.cS,0);
+    }
+    console.log(indexFolder);
+  }
 
+
+  
   
   
   return (
     <div className={isLight?'folder-index':'folder-index-dt'}>
-        {idxFolder}
-        {/* <FolderIndexItem/>
-        <FolderIndexItem/>
-        <FolderIndexItem/>
-        <FolderIndexItem/>
-        <FolderIndexItem/>
-        <FolderIndexItem/> */}
-        
-        
+        {temp() ? indexFolder: indexFolder}
     </div>
   )
 }

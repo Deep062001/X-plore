@@ -10,6 +10,7 @@ import SetNewPinModal from '../../components/SetNewPinModal/SetNewPinModal';
 import { Resizable } from "re-resizable";
 import './MainPage.scss';
 import FolderElement from '../../components/FolderElement/FolderElement';
+import completeStructure from '../../CompleteStructure';
 import context from '../../Context';
 
 const MainPage = (props) => {
@@ -18,7 +19,10 @@ const MainPage = (props) => {
   const [showAddFileFolderModal, setShowAddFileFolderModal]=useState(false);
   const [showChangePinModal, setShowChangePinModal]=useState(false);
   const [element,setElement]=useState("");
-  const [idxFile,setIdxFile]=useState([]);
+  const [filesArr,setFilesArr]=useState([]);
+  const [cS,setCS]=useState(completeStructure);
+  const [render,setRender]=useState(1);
+  const [currPath,setCurrPath]=useState([]);
   
   function handleShowPinModal(){
     setShowPinModal(prevShowPinModal=>!prevShowPinModal);
@@ -34,9 +38,42 @@ const MainPage = (props) => {
     setShowChangePinModal(prevShowChangePinModal=>!prevShowChangePinModal);
   }
 
-  function showFiles(indexFile){
-     setIdxFile(indexFile);
-     console.log(idxFile);
+  function showFiles(path){
+    if(path.length===0) return [];
+    let element= cS[path[0]];
+    for(let i=1;i<path.length;i++){
+       element=element.childNodes[path[i]];
+    }
+    let temp2=[];
+    element.childNodes.forEach(item => {
+      if(!item.isFolder)
+        temp2.push(<FileElement name={item.name} key={item.id} content={item.content}/>)
+    });
+
+    return temp2;
+  }
+
+  function changeState(path){
+
+    setCS((prevCS)=>{
+      let element=prevCS[path[0]];
+      for(let i=1;i<path.length;i++){
+         element=element.childNodes[path[i]];
+      }
+      element.isActive=(!element.isActive);
+      console.log(prevCS);
+      setRender(prev=>{
+        if(prev>10) 
+          return 1;
+        return prev+1;
+      });
+      return prevCS;
+    })
+
+    let temp=showFiles(path);
+   // console.log(temp);
+    setFilesArr(temp);
+    
   }
 
 
@@ -44,7 +81,7 @@ const MainPage = (props) => {
     <div className={isLight?'main-page-div':'main-page-div-dt'}>      
         <div className='left-div-main-page'>
           <Resizable>
-            <LeftExplorer showPinModalFunc={handleShowPinModal} showAddFileFolderModalFunc={handleShowAddFileFolderModal} passFiles={showFiles}/>
+            {render>=0 && <LeftExplorer showPinModalFunc={handleShowPinModal} showAddFileFolderModalFunc={handleShowAddFileFolderModal} cS={cS} changeState={changeState}/>}
           </Resizable>
         </div>
         <div className='right-div-main-page'>
@@ -52,7 +89,7 @@ const MainPage = (props) => {
             <Header showAddFileFolderModalFunc={handleShowAddFileFolderModal} showChangePinFunc={handleShowChangePinModal} changeTheme={props.changeTheme} />
           </div>
           <div>
-            {idxFile}
+            {filesArr}
             {/* <FileElement/>
             <FileElement/>
             <FileElement/>

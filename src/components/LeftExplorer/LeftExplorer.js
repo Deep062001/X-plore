@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import AppLogoLT from '../../assets/AppLogoLT.svg';
 import AppLogoDT from '../../assets/AppLogoDT.svg';
 import './LeftExplorer.scss';
@@ -15,9 +15,13 @@ const LeftExplorer = (props) => {
     props.showAddFileFolderModalFunc(name);
   }
 
-  function handlePass(files){
-    props.passFiles(files);
+  function changeState(path){
+    props.changeState(path);
   }
+
+  useEffect(()=>{
+    console.log("I m called left explorer");
+  })
 
 
   return (
@@ -28,7 +32,7 @@ const LeftExplorer = (props) => {
           <button className='btn-add' onClick={handleElementAddedName} name="File"><NoteAddOutlinedIcon/>Add File</button>
           <button className='btn-add' onClick={handleElementAddedName} name="Folder"><CreateNewFolderOutlinedIcon/>Add Folder</button>
         </div>
-        <FolderIndex passFiles={handlePass}/>
+        <FolderIndex cS={props.cS} changeState={changeState}/>
       </div>
       <div className='bottom-part'>
         <button className='btn-lock' onClick={props.showPinModalFunc}><LockOutlinedIcon/> Lock Now</button>
