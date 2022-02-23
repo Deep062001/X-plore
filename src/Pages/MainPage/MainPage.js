@@ -11,7 +11,10 @@ import { Resizable } from "re-resizable";
 import './MainPage.scss';
 import FolderElement from '../../components/FolderElement/FolderElement';
 import completeStructure from '../../CompleteStructure';
+import MakeFileFolder from '../../csConstructor';
 import context from '../../Context';
+
+
 
 const MainPage = (props) => {
   const isLight=useContext(context);
@@ -23,7 +26,9 @@ const MainPage = (props) => {
   const [cS,setCS]=useState(completeStructure);
   const [render,setRender]=useState(1);
   const [currPath,setCurrPath]=useState([]);
-  
+
+
+  // ============================ MODALS SHOW==================================
   function handleShowPinModal(){
     setShowPinModal(prevShowPinModal=>!prevShowPinModal);
   }
@@ -38,6 +43,10 @@ const MainPage = (props) => {
     setShowChangePinModal(prevShowChangePinModal=>!prevShowChangePinModal);
   }
 
+   // ============================ MODALS SHOW END==================================
+
+
+   // =========================INDEX AND FILES SHOW=================================
   function showFiles(path){
     if(path.length===0) return [];
     let element= cS[path[0]];
@@ -62,20 +71,59 @@ const MainPage = (props) => {
       }
       element.isActive=(!element.isActive);
       console.log(prevCS);
-      setRender(prev=>{
-        if(prev>10) 
-          return 1;
-        return prev+1;
-      });
       return prevCS;
     })
+
+    setRender(prev=>{
+      if(prev>10) 
+        return 1;
+      return prev+1;
+    });
+    
 
     let temp=showFiles(path);
    // console.log(temp);
     setFilesArr(temp);
+    setCurrPath(path);
     
   }
 
+  // =========================INDEX AND FILES SHOW END=================================
+
+
+  // ========================ADDING FILES FOLDERS=====================================
+
+  function makeElement(elementName, isFolder){
+    setCS((prevCS)=>{
+      let element=prevCS[currPath[0]];
+      for(let i=1;i<currPath.length;i++){
+         element=element.childNodes[currPath[i]];
+      }
+      const elementPath= [...element.path, element.childNodes.length];
+      const newElement=new MakeFileFolder(2526,elementName,elementPath, isFolder, " ");
+      element.childNodes.push(newElement);
+      console.log(prevCS);
+      return prevCS;
+    })
+
+    
+    setRender(prev=>{
+      if(prev>10) 
+        return 1;
+      return prev+1;
+    });
+    
+
+    let temp=showFiles(currPath);
+   // console.log(temp);
+    setFilesArr(temp);
+
+  }
+
+
+  
+
+  // ========================ADDING FILES FOLDERS END=====================================
 
   return (
     <div className={isLight?'main-page-div':'main-page-div-dt'}>      
@@ -106,7 +154,7 @@ const MainPage = (props) => {
         </div>
 
         {showPinModal&&<PinModal showPinModalFunc={handleShowPinModal}/>}
-        {showAddFileFolderModal&&<AddFileFolderModal showAddFileFolderModalFunc={handleShowAddFileFolderModal} element={element}/>}
+        {showAddFileFolderModal&&<AddFileFolderModal showAddFileFolderModalFunc={handleShowAddFileFolderModal} element={element} makeElement={makeElement}/>}
         {showChangePinModal&&<SetNewPinModal showChangePinFunc={handleShowChangePinModal}/>}
 
     </div>
