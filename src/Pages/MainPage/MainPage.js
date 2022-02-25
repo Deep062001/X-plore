@@ -22,11 +22,14 @@ const MainPage = (props) => {
   const [showPinModal,setShowPinModal]=useState(false);
   const [showAddFileFolderModal, setShowAddFileFolderModal]=useState(false);
   const [showChangePinModal, setShowChangePinModal]=useState(false);
+  const [showEditFileModal, setShowEditFileModal]=useState(false);
   const [element,setElement]=useState("");
   const [filesArr,setFilesArr]=useState([]);
   const [cS,setCS]=useState(completeStructure);
   const [render,setRender]=useState(1);
   const [currPath,setCurrPath]=useState([]);
+  const [currFile, setCurrFile]=useState([]);
+  const [currContent,setCurrContent]=useState("");
 
 
   // ============================ MODALS SHOW==================================
@@ -44,6 +47,10 @@ const MainPage = (props) => {
     setShowChangePinModal(prevShowChangePinModal=>!prevShowChangePinModal);
   }
 
+  function handleShowEditFileModal(){
+    setShowEditFileModal(prevShowEditFileModal=>!prevShowEditFileModal);
+  }
+
    // ============================ MODALS SHOW END==================================
 
 
@@ -57,7 +64,7 @@ const MainPage = (props) => {
     let temp2=[];
     element.childNodes.forEach(item => {
       if(!item.isFolder)
-        temp2.push(<FileElement name={item.name} key={item.id} content={item.content}/>)
+        temp2.push(<FileElement name={item.name} key={item.id} content={item.content} path={item.path} handleFileOpen={handleFileOpen}/>)
     });
 
     return temp2;
@@ -121,11 +128,51 @@ const MainPage = (props) => {
     setFilesArr(temp);
 
   }
-
-
-  
-
   // ========================ADDING FILES FOLDERS END=====================================
+
+
+  // ============================EDITING FILES========================================
+
+  function handleFileOpen(filePath){
+    let editFilePath=filePath;
+    console.log(editFilePath);
+    setCurrContent(()=>{
+      let element=cS[filePath[0]];
+      for(let i=1;i<filePath.length;i++){
+         element=element.childNodes[filePath[i]];
+      }
+      return element.content;
+    });
+    setCurrFile(editFilePath)?handleShowEditFileModal():handleShowEditFileModal();
+
+  }
+
+  function changeContent(content){
+    setCS((prevCS)=>{
+      let element=cS[currFile[0]];
+      for(let i=1;i<currFile.length;i++){
+         element=element.childNodes[currFile[i]];
+      }
+      element.content=content;
+      return prevCS;
+    })
+
+  //   setRender(prev=>{
+  //     if(prev>10) 
+  //       return 1;
+  //     return prev+1;
+  //   });
+    
+
+  //   let temp=showFiles(currPath);
+  //  // console.log(temp);
+  //   setFilesArr(temp);
+    
+  }
+
+
+
+  // ==========================EDITING FILES END=======================================
 
   return (
     <div className={isLight?'main-page-div':'main-page-div-dt'}>      
@@ -158,6 +205,7 @@ const MainPage = (props) => {
         {showPinModal&&<PinModal showPinModalFunc={handleShowPinModal}/>}
         {showAddFileFolderModal&&<AddFileFolderModal showAddFileFolderModalFunc={handleShowAddFileFolderModal} element={element} makeElement={makeElement}/>}
         {showChangePinModal&&<SetNewPinModal showChangePinFunc={handleShowChangePinModal}/>}
+        {showEditFileModal&&<EditFileModal showEditFileModal={handleShowEditFileModal} content={currContent} changeContent={changeContent}/>}
 
     </div>
   )

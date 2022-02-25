@@ -3,7 +3,12 @@
 
 .file-outer-div{
     display: inline-block;
-    margin: 20px ;
+    margin: 5px ;
+    padding: 15px 20px;
+    padding-bottom: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    @include animate-hover;
     .file-element-div{
         display: flex;
         flex-direction: column;
@@ -17,12 +22,20 @@
             font-size: 13px;
         }
     }
-}
 
+    &:hover{
+        background-color: $lgt-left-non-active-folder-bg;
+    }
+}
 
 .file-outer-div-dt{
     display: inline-block;
-    margin: 20px ;
+    margin: 5px ;
+    padding: 15px 20px;
+    padding-bottom: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    @include animate-hover;
     .file-element-div{
         display: flex;
         flex-direction: column;
@@ -35,5 +48,9 @@
             font-weight: 500;
             font-size: 13px;
         }
+    }
+
+    &:hover{
+        background-color: $drk-left-non-active-folder-bg;
     }
 }
