@@ -80,33 +80,36 @@
 }
 
 .new-pin-modal-dt{
-    @include lgt-modal-properties;
+    @include drk-modal-properties;
     .set-pin-modal-div{
         display: inline-block;
         text-align: center;
         border-radius: 10px;
-        background-color: #ffffff;
-        border: 1px solid $lgt-left-non-active-folder-bg;
+        background-color: $drk-left-explorer-bg;
+        border: 1px solid $drk-left-non-active-folder-bg;
         padding: 70px 50px;
         h3{
+            color: $drk-primary-text;
             margin:0 0 30px 0;
             font-size: 18px;
         }
     
         p{
             @include font-dmsans;
-            color: $lgt-non-active-text-icon;
+            color: $drk-primary-text;
             font-weight: 500;
             text-align: left;
             font-size: 16px;
         }
     
         input{
+            background-color: $drk-bg;
             border: 0;
             font-size: 16px;
             text-align: left;
             width: 300px;
             padding: 7px 12px;
+            color: $drk-primary-text;
     
             &:focus{
                 outline: none;
@@ -114,20 +117,21 @@
         }
     
         .pin-input-div{
+            background-color: $drk-bg;
             display: flex;
             flex-direction: row;
-            border: 1.75px solid $lgt-left-non-active-folder-bg;
+            border: 1.75px solid $drk-add-buttons-border;
             border-radius: 4px;
             align-items: center;
     
             &:focus-within{
-                border: 1.75px solid $lgt-modal-btns;
+                border: 1.75px solid $drk-primary-text;
             }
     
         }
     
         .eye-icon{
-            fill: $lgt-search-text;
+            fill: $drk-search-text;
             margin-right: 10px;
             padding: 2px;
         }
@@ -138,18 +142,18 @@
             font-family: 'DM Sans', sans-serif;
             border: solid;
             font-size: 16px;
-            background-color: $lgt-modal-btns;
+            background-color: $drk-modal-btns;
             padding: 5px 25px;
             border-radius: 4px;
             border-width: 3px;
             color: #FFFFFF;
-            border-color: $lgt-modal-btns;
+            border-color: $drk-modal-btns;
             font-weight: 500;
             @include animate-hover;
         }
     
         .modal-submit-btn:hover{
-            background-color: $lgt-modal-btns-hover;
+            background-color: $drk-modal-btns-hover;
     
         }
     
