@@ -14,10 +14,11 @@ const FolderIndex = (props) => {
 
 
   let indexFolder=[];
-  function createIndex(folderArray, marginL){
+  function createIndex(folderArray, marginL,len){
     folderArray.forEach(function(item){
       if(item.isFolder){
-        indexFolder.push(<FolderIndexItem key={item.id} name={item.name} marginL={marginL} path={item.path} isActive={item.isActive} changeState={changeState}/>);
+        let isOpen=(props.currPath===item.path)?true:false;
+        indexFolder.push(<FolderIndexItem key={item.id} name={item.name} isOpen={isOpen} marginL={marginL} path={item.path} isActive={item.isActive} changeState={changeState}/>);
         if(item.childNodes.length>0 && item.isActive){
           createIndex(item.childNodes,marginL+20);
         }
@@ -29,7 +30,7 @@ const FolderIndex = (props) => {
     if(indexFolder=[]){
         createIndex(props.cS,0);
     }
-    console.log(indexFolder);
+   // console.log(indexFolder);
   }
 
 

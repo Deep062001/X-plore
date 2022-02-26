@@ -32,7 +32,7 @@ const LeftExplorer = (props) => {
           <button className='btn-add' onClick={handleElementAddedName} name="File"><NoteAddOutlinedIcon/>Add File</button>
           <button className='btn-add' onClick={handleElementAddedName} name="Folder"><CreateNewFolderOutlinedIcon/>Add Folder</button>
         </div>
-        <FolderIndex cS={props.cS} changeState={changeState}/>
+        <FolderIndex cS={props.cS} changeState={changeState} currPath={props.currPath}/>
       </div>
       <div className='bottom-part'>
         <button className='btn-lock' onClick={props.showPinModalFunc}><LockOutlinedIcon/> Lock Now</button>

@@ -14,8 +14,8 @@ const App = () => {
 
   return <context.Provider value={isLight}>
     <div>
-      <MainPage changeTheme={changeTheme}/>
-      {/* <HomePage/> */}
+      {/* <MainPage changeTheme={changeTheme}/> */}
+      <HomePage/>
     </div>
   </context.Provider>;
 };

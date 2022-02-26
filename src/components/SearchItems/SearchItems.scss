@@ -1,0 +1,64 @@
+@import '../../variables.scss';
+@import '../../properties.scss';
+
+
+.search-item-div{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1.5px solid $lgt-left-non-active-folder-bg;
+   // border-radius: 4px;
+    margin: 0;
+    padding: 10px 15px;
+    text-align: left;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 500;
+
+    @include font-dmsans;
+    @include animate-hover;
+
+    &:hover{
+      background-color: $lgt-left-non-active-folder-bg;
+    }
+
+    .item-flex{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+
+        .icon{
+            color: $lgt-lock-button;
+        }
+    }
+}
+
+.search-item-div-dt{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1.5px solid $drk-add-buttons-border;
+   // border-radius: 4px;
+    margin: 0;
+    padding: 10px 15px;
+    text-align: left;
+    background-color:  $drk-left-explorer-bg;
+    color: $drk-primary-text;
+    font-weight: 500;
+
+    @include font-dmsans;
+    @include animate-hover;
+
+    &:hover{
+      background-color: $drk-left-non-active-folder-bg;
+    }
+    .item-flex{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+
+        .icon{
+            color: #69A1F8;;
+        }
+    }
+}

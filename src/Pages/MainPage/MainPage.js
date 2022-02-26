@@ -71,14 +71,16 @@ const MainPage = (props) => {
   }
 
   function changeState(path){
-
+   // console.log(path);
+    setCurrPath(path);
     setCS((prevCS)=>{
       let element=prevCS[path[0]];
       for(let i=1;i<path.length;i++){
+         element.isActive=true;
          element=element.childNodes[path[i]];
       }
       element.isActive=(!element.isActive);
-      console.log(prevCS);
+      //console.log(prevCS);
       return prevCS;
     })
 
@@ -92,8 +94,8 @@ const MainPage = (props) => {
     let temp=showFiles(path);
    // console.log(temp);
     setFilesArr(temp);
-    setCurrPath(path);
     
+    console.log(currPath);
   }
 
   // =========================INDEX AND FILES SHOW END=================================
@@ -111,7 +113,7 @@ const MainPage = (props) => {
       const id=uuidv4(); 
       const newElement=new MakeFileFolder(id,elementName,elementPath, isFolder, " ");
       element.childNodes.push(newElement);
-      console.log(prevCS);
+    //  console.log(prevCS);
       return prevCS;
     })
 
@@ -135,7 +137,7 @@ const MainPage = (props) => {
 
   function handleFileOpen(filePath){
     let editFilePath=filePath;
-    console.log(editFilePath);
+    //console.log(editFilePath);
     setCurrContent(()=>{
       let element=cS[filePath[0]];
       for(let i=1;i<filePath.length;i++){
@@ -169,36 +171,21 @@ const MainPage = (props) => {
   //   setFilesArr(temp);
     
   }
-
-
-
   // ==========================EDITING FILES END=======================================
 
   return (
     <div className={isLight?'main-page-div':'main-page-div-dt'}>      
         <div className='left-div-main-page'>
           <Resizable>
-            {render>=0 && <LeftExplorer showPinModalFunc={handleShowPinModal} showAddFileFolderModalFunc={handleShowAddFileFolderModal} cS={cS} changeState={changeState}/>}
+            {render>=0 && <LeftExplorer currPath={currPath} showPinModalFunc={handleShowPinModal} showAddFileFolderModalFunc={handleShowAddFileFolderModal} cS={cS} changeState={changeState}/>}
           </Resizable>
         </div>
         <div className='right-div-main-page'>
           <div>
-            <Header showAddFileFolderModalFunc={handleShowAddFileFolderModal} showChangePinFunc={handleShowChangePinModal} changeTheme={props.changeTheme} />
+            {render>=0 && <Header showAddFileFolderModalFunc={handleShowAddFileFolderModal} currPath={currPath} showChangePinFunc={handleShowChangePinModal} cS={cS}  changeState={changeState} changeTheme={props.changeTheme} />}
           </div>
           <div>
             {filesArr}
-            {/* <FileElement/>
-            <FileElement/>
-            <FileElement/>
-            <FolderElement/>
-            <FolderElement/>
-            <FileElement/>
-            <FolderElement/>
-            <FileElement/>
-            <FileElement/>
-            <FileElement/>
-            <FileElement/>
-            <FileElement/> */}
           </div>
         </div>
 

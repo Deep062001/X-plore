@@ -14,7 +14,7 @@
     height: fit-content;
     border-radius: 4px;
     background-color: #ffffff;
-    z-index: 2;
+    z-index: 1;
     box-shadow: 0 0 5px $lgt-left-non-active-folder-bg;
     
 
@@ -57,7 +57,7 @@
     height: fit-content;
     border-radius: 4px;
     background-color: $drk-left-explorer-bg;
-    z-index: 2;
+    z-index: 1;
     box-shadow: 0 0 5px $drk-left-non-active-folder-bg;
     
 

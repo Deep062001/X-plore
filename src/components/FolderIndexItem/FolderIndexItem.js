@@ -1,7 +1,9 @@
 import React, { useContext } from 'react'
 import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
+import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
 import './FolderIndexItem.scss';
 import context from '../../Context';
+import CircleIcon from '@mui/icons-material/Circle';
 
 const FolderIndexItem = (props) => {
   const isLight=useContext(context);
@@ -13,8 +15,9 @@ const FolderIndexItem = (props) => {
 
 
   return (
-    <div className={isLight?'folder-index-item':'folder-index-item-dt'} style={{ marginLeft : marginL }} onClick={handleClick}>
-          <FolderOutlinedIcon/> {props.name}
+    <div className={isLight?(props.isOpen?'folder-index-item-active':'folder-index-item'):(props.isOpen?'folder-index-item-dt-active':'folder-index-item-dt')} style={{ marginLeft : marginL }} onClick={handleClick}>
+         <div className='folder-name-div'>{props.isOpen?<FolderOpenOutlinedIcon/>:<FolderOutlinedIcon/>} {props.name}</div>
+         <div>{props.isOpen&&<CircleIcon style={{padding:"6px"}} className="icon-active"/>}</div>
     </div>
   )
 }

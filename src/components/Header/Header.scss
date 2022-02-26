@@ -50,6 +50,23 @@
                 }
             }
 
+            .search-items-div{
+                border: 1.5px solid $lgt-left-non-active-folder-bg;
+                border-bottom: 0;
+                border-radius: 4px;
+                position: absolute;
+                top: 90px;
+                z-index: 1;
+                display: flex;
+                flex-direction: column;
+                width: 440px;
+            }
+
+            &:focus-within{
+                border: 1px solid;
+                border-color: $lgt-non-active-text-icon;
+            }
+
 
         }
 
@@ -104,6 +121,18 @@
         border: none;
         border-top: $lgt-left-non-active-folder-bg 1px solid;
         width: 100%;
+    }
+
+    .bottom-path-div{
+        color: #000000;
+        @include font-dmsans;
+        font-weight: 600;
+        .span-path{
+            cursor: pointer;
+            &:hover{
+                text-decoration: underline dotted;
+            }
+        }
     }
     
 }
@@ -161,6 +190,19 @@
                 }
             }
 
+            .search-items-div{
+                background-color: $drk-left-explorer-bg;
+                border: 1.5px solid $drk-add-buttons-border;
+                //border-bottom: 0;
+                border-radius: 4px;
+                position: absolute;
+                top: 90px;
+                z-index: 1;
+                display: flex;
+                flex-direction: column;
+                width: 440px;
+            }
+
             &:focus-within{
                 color: #ffffff;
                 border-color: #ffffff;
@@ -213,10 +255,20 @@
                 background-color: $drk-left-non-active-folder-bg;
             }
 
-
-
         }
         
+    }
+
+    .bottom-path-div{
+        color: $drk-primary-text;
+        @include font-dmsans;
+        font-weight: 600;
+        .span-path{
+            cursor: pointer;
+            &:hover{
+                text-decoration: underline dotted;
+            }
+        }
     }
 
     hr{
@@ -224,5 +276,7 @@
         border-top: $drk-add-buttons-border 1px solid;
         width: 100%;
     }
+
+
     
 }
