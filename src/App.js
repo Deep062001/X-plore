@@ -1,33 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import HomePage from './Pages/HomePage/HomePage';
 import MainPage from './Pages/MainPage/MainPage';
-import { HAS_USER_LOGGED, USER_PIN } from './localStorageKeys';
+import { HAS_USER_LOGGED, IS_LIGHT_MODE } from './localStorageKeys';
 import './App.scss';
 import context from './Context';
 
 
 const App = () => {
-  const [isLight,setIsLight]=useState(true);
-  const [showMainPage,setShowMainPage]=useState(false);
+  // const [isLight,setIsLight]=useState(true);
+  // const [showMainPage,setShowMainPage]=useState(false);
+  const [hasUserLoggedBefore,setHasUserLoggedBefore]=useState({
+    showMainPage: false,
+    isLight: true
+  })
   useEffect(() => {
     const hasUserLogged = JSON.parse(localStorage.getItem(HAS_USER_LOGGED));
     if (hasUserLogged)
-     {  setShowMainPage(hasUserLogged); }
+    { 
+      setHasUserLoggedBefore(hasUserLogged);
+    }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(HAS_USER_LOGGED, JSON.stringify(showMainPage));
-  }, [showMainPage]);
+    localStorage.setItem(HAS_USER_LOGGED, JSON.stringify(hasUserLoggedBefore));
+  }, [hasUserLoggedBefore]);
+
+  
 
   function changeTheme(){
-    setIsLight(prev=>!prev);
+    setHasUserLoggedBefore(prev=>{
+      return {
+        ...prev, 
+        isLight: !prev.isLight
+      }
+    })
   }
 
-  return <context.Provider value={isLight}>
+  return <context.Provider value={hasUserLoggedBefore.isLight}>
     <div>
-      {showMainPage && <MainPage changeTheme={changeTheme}/>}
-      {!showMainPage && <HomePage showMainPage={()=>{
-        setShowMainPage(true);
+      {hasUserLoggedBefore.showMainPage && <MainPage changeTheme={changeTheme}/>}
+      {!hasUserLoggedBefore.showMainPage && <HomePage showMainPage={()=>{
+        setHasUserLoggedBefore(prev=>{
+          return {
+            ...prev, 
+            showMainPage: true
+          }
+        })
       }}/>}
     </div>
   </context.Provider>;
