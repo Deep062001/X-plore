@@ -5,7 +5,7 @@ import Form from "../../components/Form/Form";
 import './HomePage.scss'
 //import context from '../../Context';
 
-const HomePage = () => {
+const HomePage = (props) => {
 //  const isLight=useContext(context);
   return <div>
     <Navbar/>
@@ -15,7 +15,7 @@ const HomePage = () => {
                 <LeftHomeDiv/>
             </div>
             <div className="col">
-                <Form/>
+                <Form showMainPage={props.showMainPage}/>
             </div>
         </div>
       </div>

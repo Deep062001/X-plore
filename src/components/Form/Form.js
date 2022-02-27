@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Form.scss';
 import context from '../../Context';;
 
-const Form = () => {
+const Form = (props) => {
   const [pins,setPins]=useState({
     newPin:"",
     confirmPin:""
@@ -24,13 +24,17 @@ const Form = () => {
   function handleSubmit(event){
     if(pins.newPin.length!==4 || pins.confirmPin.length!==4){
       alert("Pin Should be of 4 characters");
-    }
-
-    if(pins.newPin!==pins.confirmPin){
+      setPins({newPin:"",
+      confirmPin:""});
+    } 
+    else if(pins.newPin!==pins.confirmPin){
       alert("Pins are not same");
+      setPins({newPin:"",
+      confirmPin:""});
     }
-    setPins({newPin:"",
-    confirmPin:""});
+    else{
+        props.showMainPage();
+    }
 
     event.preventDefault();
   }
