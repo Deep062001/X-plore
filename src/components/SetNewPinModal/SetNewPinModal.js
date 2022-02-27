@@ -3,6 +3,7 @@ import './SetNewPinModal.scss';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import context from '../../Context';
+import { USER_PIN } from '../../localStorageKeys';
 
 
 const SetNewPinModal = (props) => {
@@ -18,12 +19,11 @@ const SetNewPinModal = (props) => {
 
   function handlePinChange(event){
     const {name, value}=event.target;
-    console.log(name);
 
     setPins((prev)=>{
       return {
         ...prev,
-        [name]:value
+        [name]:value.replace(/[^0-9]/g, '')
       }
     })
 
@@ -41,6 +41,7 @@ const SetNewPinModal = (props) => {
       confirmPin:""});
     }
     else{
+      localStorage.setItem(USER_PIN, JSON.stringify(pins.newPin));
       props.showChangePinFunc();
     }
     e.preventDefault();

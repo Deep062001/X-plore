@@ -32,6 +32,24 @@
                 border: 1.75px solid $lgt-modal-btns;
                 outline: none;
             }
+
+            .pin-input-correct{
+                border: 1.75px solid rgb(36, 192, 44);
+                padding: 10px 12px;
+                border-radius: 4px;
+                font-size: 20px;
+                text-align: center;
+                font-weight: 500;
+            }
+
+            .pin-input-wrong{
+                border: 1.75px solid rgb(219, 17, 17);
+                padding: 10px 12px;
+                border-radius: 4px;
+                font-size: 20px;
+                text-align: center;
+                font-weight: 500;
+            }
         }
     
         .modal-submit-btn{
@@ -91,6 +109,28 @@
             .pin-input:focus{
                 border: 1.75px solid $drk-primary-text;
                 outline: none;
+            }
+
+            .pin-input-correct{
+                border: 1.75px solid rgb(36, 192, 44);
+                background-color: $drk-bg;
+                padding: 10px 12px;
+                border-radius: 4px;
+                color: $drk-primary-text;
+                font-weight: 500;
+                font-size: 20px;
+                text-align: center;
+            }
+
+            .pin-input-wrong{
+                border: 1.75px solid rgb(219, 17, 17);
+                background-color: $drk-bg;
+                padding: 10px 12px;
+                border-radius: 4px;
+                color: $drk-primary-text;
+                font-weight: 500;
+                font-size: 20px;
+                text-align: center;
             }
         }
     

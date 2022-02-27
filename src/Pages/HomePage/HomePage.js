@@ -3,10 +3,8 @@ import Navbar from "../../components/Navbar/Navbar";
 import LeftHomeDiv from "../../components/LeftHomeDiv/LeftHomeDiv";
 import Form from "../../components/Form/Form";
 import './HomePage.scss'
-//import context from '../../Context';
 
 const HomePage = (props) => {
-//  const isLight=useContext(context);
   return <div>
     <Navbar/>
       <div className="container">

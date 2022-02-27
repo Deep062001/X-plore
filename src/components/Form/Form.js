@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Form.scss';
-import context from '../../Context';;
+import context from '../../Context';import { USER_PIN } from '../../localStorageKeys';
+;
 
 const Form = (props) => {
   const [pins,setPins]=useState({
@@ -10,12 +11,12 @@ const Form = (props) => {
 
   function handlePinChange(event){
     const {name, value}=event.target;
-    console.log(name);
+
 
     setPins((prev)=>{
       return {
         ...prev,
-        [name]:value
+        [name]:value.replace(/[^0-9]/g, '')
       }
     })
 
@@ -33,6 +34,7 @@ const Form = (props) => {
       confirmPin:""});
     }
     else{
+        localStorage.setItem(USER_PIN, JSON.stringify(pins.newPin));
         props.showMainPage();
     }
 
