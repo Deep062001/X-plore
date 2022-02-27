@@ -66,6 +66,12 @@ const PinModal = (props) => {
       setPinCorrect(2);
       setTimeout(() => { 
         setPinCorrect(0);
+        setPinArr({
+          zero: "",
+          one: "",
+          two: "",
+          three: ""
+        });
        }, 700);
 
     }

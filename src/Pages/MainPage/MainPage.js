@@ -19,7 +19,7 @@ import context from '../../Context';
 
 const MainPage = (props) => {
   const isLight=useContext(context);
-  const [showPinModal,setShowPinModal]=useState(false);
+  const [showPinModal,setShowPinModal]=useState(true);
   const [showAddFileFolderModal, setShowAddFileFolderModal]=useState(false);
   const [showChangePinModal, setShowChangePinModal]=useState(false);
   const [showEditFileModal, setShowEditFileModal]=useState(false);
