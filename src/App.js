@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import HomePage from './Pages/HomePage/HomePage';
 import MainPage from './Pages/MainPage/MainPage';
-import { HAS_USER_LOGGED, IS_LIGHT_MODE } from './localStorageKeys';
+import { HAS_USER_LOGGED } from './localStorageKeys';
 import './App.scss';
 import context from './Context';
 
 
 const App = () => {
-  // const [isLight,setIsLight]=useState(true);
-  // const [showMainPage,setShowMainPage]=useState(false);
   const [hasUserLoggedBefore,setHasUserLoggedBefore]=useState({
     showMainPage: false,
     isLight: true
@@ -19,7 +17,7 @@ const App = () => {
     { 
       setHasUserLoggedBefore(hasUserLogged);
     }
-  }, []);
+  },[]);
 
   useEffect(() => {
     localStorage.setItem(HAS_USER_LOGGED, JSON.stringify(hasUserLoggedBefore));

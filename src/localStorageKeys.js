@@ -1,5 +1,5 @@
 const HAS_USER_LOGGED="has_user_logged";
-const IS_LIGHT_MODE="is_light_mode";
-let USER_PIN="user_pin";
+const USER_PIN="user_pin";
+const COMPLETE_STRUCTURE="complete_directory_structure";
 
-export { HAS_USER_LOGGED ,IS_LIGHT_MODE, USER_PIN};
+export { HAS_USER_LOGGED , USER_PIN, COMPLETE_STRUCTURE};

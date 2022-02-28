@@ -72,6 +72,7 @@ const PinModal = (props) => {
           two: "",
           three: ""
         });
+        pin0.current.focus();
        }, 700);
 
     }

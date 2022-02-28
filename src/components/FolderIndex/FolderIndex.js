@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import FolderIndexItem from '../FolderIndexItem/FolderIndexItem';
 import './FolderIndex.scss';
 import context from '../../Context';
-import completeStructure from '../../CompleteStructure';
-import FileElement from '../FileElement/FileElement';
 
 const FolderIndex = (props) => {
   const isLight=useContext(context);

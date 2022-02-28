@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Resizable } from "re-resizable";
 import { v4 as uuidv4 } from 'uuid';
 import './MainPage.scss';
@@ -14,6 +14,7 @@ import FolderElement from '../../components/FolderElement/FolderElement';
 import completeStructure from '../../CompleteStructure';
 import MakeFileFolder from '../../csConstructor';
 import context from '../../Context';
+import { COMPLETE_STRUCTURE } from '../../localStorageKeys';
 
 
 
@@ -30,6 +31,25 @@ const MainPage = (props) => {
   const [currPath,setCurrPath]=useState([]);
   const [currFile, setCurrFile]=useState([]);
   const [currContent,setCurrContent]=useState("");
+
+  //==============================USE EFFECT=======================================
+
+  useEffect(() => {
+    const localDirectoryStructure = JSON.parse(localStorage.getItem(COMPLETE_STRUCTURE));
+    if (localDirectoryStructure)
+    { 
+      setCS(localDirectoryStructure);
+    }
+  },[]);
+
+  useEffect(() => {
+    localStorage.setItem(COMPLETE_STRUCTURE, JSON.stringify(cS));
+  }, [render]);
+    
+
+
+
+  //=============================USE EFFECT END======================================
 
 
   // ============================ MODALS SHOW==================================
