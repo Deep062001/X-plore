@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './Form.scss';
-import context from '../../Context';import { USER_PIN } from '../../localStorageKeys';
-;
+import { USER_PIN } from '../../localStorageKeys';
 
 const Form = (props) => {
   const [pins,setPins]=useState({

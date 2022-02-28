@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext} from 'react';
 import FolderIndexItem from '../FolderIndexItem/FolderIndexItem';
 import './FolderIndex.scss';
 import context from '../../Context';
@@ -25,10 +25,8 @@ const FolderIndex = (props) => {
   }
 
   function temp(){
-    if(indexFolder=[]){
-        createIndex(props.cS,0);
-    }
-   // console.log(indexFolder);
+    indexFolder=[];
+    createIndex(props.cS,0);
   }
 
 

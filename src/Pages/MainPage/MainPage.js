@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from 'react'
 import { Resizable } from "re-resizable";
 import { v4 as uuidv4 } from 'uuid';
 import './MainPage.scss';
-import AddDropdown from '../../components/AddDropdown/AddDropdown';
 import AddFileFolderModal from '../../components/AddFileFolderModal/AddFileFolderModal';
 import EditFileModal from '../../components/EditFileModal/EditFileModal';
 import FileElement from '../../components/FileElement/FileElement';
@@ -10,7 +9,6 @@ import Header from '../../components/Header/Header';
 import LeftExplorer from '../../components/LeftExplorer/LeftExplorer';
 import PinModal from '../../components/PinModal/PinModal';
 import SetNewPinModal from '../../components/SetNewPinModal/SetNewPinModal';
-import FolderElement from '../../components/FolderElement/FolderElement';
 import completeStructure from '../../CompleteStructure';
 import MakeFileFolder from '../../csConstructor';
 import context from '../../Context';
@@ -44,7 +42,7 @@ const MainPage = (props) => {
 
   useEffect(() => {
     localStorage.setItem(COMPLETE_STRUCTURE, JSON.stringify(cS));
-  }, [render]);
+  }, [render,cS]);
     
   //=============================USE EFFECT END======================================
 
