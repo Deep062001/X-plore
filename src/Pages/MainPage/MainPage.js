@@ -46,9 +46,6 @@ const MainPage = (props) => {
     localStorage.setItem(COMPLETE_STRUCTURE, JSON.stringify(cS));
   }, [render]);
     
-
-
-
   //=============================USE EFFECT END======================================
 
 

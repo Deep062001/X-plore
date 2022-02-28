@@ -52,10 +52,10 @@ const Header = (props) => {
   }
   function func(t) {
     arr = [];
-    //console.log(searchText);
+ 
     searchdiv(props.cS, t);
     setItems(arr);
-    // console.log(items);
+
     return arr;
   }
 
@@ -66,8 +66,6 @@ const Header = (props) => {
       func(t);
       return t;
     });
-
-    // console.log(searchText);
   }
 
   function pathTillNow(){
