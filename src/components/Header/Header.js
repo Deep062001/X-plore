@@ -34,10 +34,6 @@ const Header = (props) => {
 
 const [searchText, setSearchText] = useState("");
 const [items, setItems] = useState([]);
-function selectElement(path){
-    setSearchText("");
-    props.changeState(path);
-}
 
 function makeActive(path){
   setSearchText("");
