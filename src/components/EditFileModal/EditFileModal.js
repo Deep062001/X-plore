@@ -4,24 +4,25 @@ import context from '../../Context';
 
 const EditFileModal = (props) => {
   const isLight=useContext(context);
-  const [content,setContent]=useState(props.content);
+  const [content,setContent]=useState(props.currFile.content);
+  // take out content from local storage or cS passed
 
   function handleChange(event){
-    const txt=event.target.value;
-    setContent(txt);
+    const value=event.target.value;
+    setContent(value);
   }
 
   function onSave(e){
       e.preventDefault();
-      props.changeContent(content);
-      props.showEditFileModal();
+      // change the value in cS by passing the content to main window
+      props.makeEdit(props.currFile.path, content);
   }
   return (
-    <div className={isLight?'edit-file-modal':'edit-file-modal-dt'}>  
-      <div className='edit-file-modal-div'>
-        <h3>Edit File</h3>
+    <div className={isLight?'edit-file-modal':'edit-file-modal-dt'} onClick={props.handleShowEditFileModal}>  
+      <div className='edit-file-modal-div' onClick={(e)=>{e.stopPropagation()}}>
+        <h3>Editing File {props.currFile.name}</h3>
         <form>
-          <textarea className='file-text' placeholder='Type something here!' value={content} onChange={handleChange}/>
+          <textarea className='file-text' placeholder='Type something here!' value={content} onChange={handleChange} autoFocus/>
           <div>
             <button className='modal-submit-btn'  onClick={onSave}>Save File</button>
           </div>

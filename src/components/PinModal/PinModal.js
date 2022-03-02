@@ -3,6 +3,7 @@ import './PinModal.scss';
 import context from '../../Context';
 import { USER_PIN } from '../../localStorageKeys';
 
+// ========================== FINE ==============================
 const PinModal = (props) => {
   const isLight=useContext(context);
   const [pinArr,setPinArr]=useState({

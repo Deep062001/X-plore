@@ -1,6 +1,6 @@
 const completeStructure= [
     {
-      name: "Folder1",
+      name: "Harry",
       id: 123,
       path: [0],
       isFolder: true,
@@ -8,7 +8,7 @@ const completeStructure= [
       content: "",
       childNodes: [
         {
-          name: "Sub1",
+          name: "Hegwid",
           id: 234,
           path: [0,0],
           isFolder: true,
@@ -17,18 +17,18 @@ const completeStructure= [
           childNodes: []
         },
         {
-          name: "File1",
+          name: "Marauders Map",
           id: 2777,
           path: [0,1],
           isFolder: false,
           isActive: false,
-          content: "lalalala",
+          content: "Moony, Wormtail, Padfoot and Prongs",
           childNodes: []
         },
       ]
     },
     {
-      name: "Folder2",
+      name: "Hermione",
       id: 3434,
       path: [1],
       isFolder: true,
@@ -36,7 +36,7 @@ const completeStructure= [
       content: "",
       childNodes: [
         {
-          name: "Sub3",
+          name: "Ron",
           id: 344,
           path: [1,0],
           isFolder: true,
@@ -44,7 +44,7 @@ const completeStructure= [
           content: "",
           childNodes: [
             {
-              name: "Sub-Sub1",
+              name: "Scabbers",
               id: 443,
               path: [1,0,0],
               isFolder: true,
@@ -53,7 +53,7 @@ const completeStructure= [
               childNodes: []
             },
             {
-              name: "Sub-Sub2",
+              name: "Pure-Blood",
               id: 342,
               path: [1,0,1],
               isFolder: true,
@@ -62,12 +62,12 @@ const completeStructure= [
               childNodes: []
             },
             {
-              name: "File-file",
+              name: "Quidditch",
               id: 3752,
               path: [1,0,2],
               isFolder: false,
               isActive: false,
-              content: "ddddddddddsdsds",
+              content: "How to be a part of Quidditch Team at Hogwarts?",
               childNodes: []
             },
           ]

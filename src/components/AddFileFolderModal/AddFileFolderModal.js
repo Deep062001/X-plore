@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import './AddFileFolderModal.scss';
 import context from '../../Context';
 
+// ================= FINE ===========================
 const AddFileFolderModal = (props) => {
   const isLight=useContext(context);
   const [elementName,setElementName]=useState("");
@@ -12,13 +13,11 @@ const AddFileFolderModal = (props) => {
   }
 
   function makeElement(e){
-    e.preventDefault();
-    e.stopPropagation(); 
-    const isFolder=props.element==='Folder'?true:false;
-    props.makeElement(elementName,isFolder);
+    const isFolder=props.element==="Folder";
     props.showAddFileFolderModalFunc();
+    props.makeElement(isFolder, elementName);
+    e.preventDefault();
   }
-
 
   return (
     <div className={isLight?'add-modal':'add-modal-dt'} onClick={props.showAddFileFolderModalFunc}>
@@ -26,7 +25,7 @@ const AddFileFolderModal = (props) => {
     <h3>Create {props.element}</h3>
       <form>
       <p>Enter {props.element} name: </p>
-      <input className='name-input' type='character' onChange={handleChange} value={elementName}/>
+      <input className='name-input' type='character' onChange={handleChange} value={elementName} autoFocus/>
       <div>
         <button className='modal-submit-btn' onClick={makeElement}>Create Now</button>
       </div>

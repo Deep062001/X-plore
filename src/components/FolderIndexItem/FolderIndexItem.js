@@ -15,7 +15,7 @@ const FolderIndexItem = (props) => {
 
 
   return (
-    <div className={isLight?(props.isOpen?'folder-index-item-active':'folder-index-item'):(props.isOpen?'folder-index-item-dt-active':'folder-index-item-dt')} style={{ marginLeft : marginL }} onClick={handleClick}>
+    <div className={isLight?(props.isOpen?'folder-index-item-active':'folder-index-item'):(props.isOpen?'folder-index-item-dt-active':'folder-index-item-dt')} onClick={handleClick} style={{ marginLeft : marginL }}>
          <div className='folder-name-div'>{props.isOpen?<FolderOpenOutlinedIcon/>:<FolderOutlinedIcon/>} {props.name}</div>
          <div>{props.isOpen&&<CircleIcon style={{padding:"6px"}} className="icon-active"/>}</div>
     </div>
@@ -23,3 +23,7 @@ const FolderIndexItem = (props) => {
 }
 
 export default FolderIndexItem
+
+
+//(props.isOpen?'folder-index-item-active':'folder-index-item') for showing open file
+// margin style={{ marginLeft : marginL }}

@@ -2,6 +2,7 @@ import React from 'react';
 import HomeFilePic from '../../assets/HomeFilePic';
 import './LeftHomeDiv.scss';
 
+// ========================== FINE ==============================
 const LeftHomeDiv = () => {
   return <div>
       <div className="text-left-div-welcome">

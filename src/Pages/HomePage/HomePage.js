@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import LeftHomeDiv from "../../components/LeftHomeDiv/LeftHomeDiv";
 import Form from "../../components/Form/Form";
 import './HomePage.scss'
-
+// ========================== FINE ==============================
 const HomePage = (props) => {
   return <div>
     <Navbar/>

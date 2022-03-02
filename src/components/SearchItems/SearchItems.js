@@ -6,11 +6,11 @@ import './SearchItems.scss';
 const SearchItems = (props) => {
   const isLight=useContext(context);
   function selectElement(){
+    let itemPath=[...props.path];
       if(!props.isFolder){
-        props.path.pop();
+        itemPath.pop();
       }
-      console.log(props.path);  
-      props.changeState(props.path);      
+      props.makeActive(itemPath);      
   }
   return (
     <div className={isLight?'search-item-div':'search-item-div-dt'} onClick={selectElement}>

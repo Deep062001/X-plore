@@ -30,60 +30,74 @@ const Header = (props) => {
 
 // ================NO BUGS END===========================
 
-  const [searchText, setSearchText] = useState("");
-  const [items, setItems] = useState([]);
-  function selectElement(path){
-      setSearchText("");
-      props.changeState(path);
-  }
-  let arr = [];
-  function searchdiv(compStructure, t) {
-    compStructure.forEach((item) => {
-      if (item.name.toLowerCase().includes(t.toLowerCase())) {
-        arr.push(
-          <SearchItems path={item.path} key={item.id} name={item.name} changeState={selectElement} isFolder={item.isFolder}/>
-        );
-      }
+//====================SEARCH==========================
 
-      if (item.childNodes.length > 0) {
-        searchdiv(item.childNodes, t);
-      }
-    });
-  }
-  function func(t) {
-    arr = [];
- 
-    searchdiv(props.cS, t);
-    setItems(arr);
+const [searchText, setSearchText] = useState("");
+const [items, setItems] = useState([]);
+function selectElement(path){
+    setSearchText("");
+    props.changeState(path);
+}
 
-    return arr;
-  }
-
-  function handleChange(event) {
-    const t = event.target.value;
-
-    setSearchText((prev) => {
-      func(t);
-      return t;
-    });
-  }
-
-  function pathTillNow(){
-    let Path=props.currPath;
-    let pathArr=[];
-    let element=props.cS[Path[0]];
-    pathArr.push(<span><span className="span-path" onClick={()=>{
-      selectElement(Path.slice(0,1));
-    }}>{element.name } </span> / </span>);
-    for(let i=1;i<Path.length;i++){
-       element=element.childNodes[Path[i]];
-       pathArr.push(<span><span className="span-path" onClick={()=>{
-          selectElement(Path.slice(0,i+1));
-       }}>{element.name }</span> / </span>);
+function makeActive(path){
+  setSearchText("");
+  props.makeActive(path);
+}
+let arr = [];
+function searchdiv(compStructure, t) {
+  compStructure.forEach((item) => {
+    if (item.name.toLowerCase().includes(t.toLowerCase())) {
+      console.log(item.path);
+      arr.push(
+        <SearchItems path={item.path} key={item.id} name={item.name} makeActive={makeActive} isFolder={item.isFolder}/>
+      );
     }
 
-    return pathArr;
+    if (item.childNodes.length > 0) {
+      searchdiv(item.childNodes, t);
+    }
+  });
+}
+function func(t) {
+  arr = [];
+
+  searchdiv(props.directory.structure, t);
+  setItems(arr);
+
+  return arr;
+}
+
+function handleChange(event) {
+  const t = event.target.value;
+
+  setSearchText((prev) => {
+    func(t);
+    return t;
+  });
+}
+
+//===============SEARCH END==========================
+
+function pathTillNow(){
+  let Path=[...props.directory.currPath];
+  let pathArr=[];
+  let element=props.directory.structure[Path[0]];
+  pathArr.push(<span key={element.id}><span className="span-path" onClick={()=>{
+    makeActive(Path.slice(0,1));
+  }}>{element.name } </span> / </span>);
+  for(let i=1;i<Path.length;i++){
+     element=element.childNodes[Path[i]];
+     pathArr.push(<span key={element.id}><span className="span-path" onClick={()=>{
+        makeActive(Path.slice(0,i+1));
+     }}>{element.name }</span> / </span>);
   }
+
+  return pathArr;
+}
+
+
+
+
 
   return (
     <div className={isLight?'header-div':'header-div-dt'}>
@@ -107,9 +121,9 @@ const Header = (props) => {
                 <button className='btn-icons' onClick={props.showChangePinFunc}><SettingsOutlinedIcon/></button>
             </div>
         </div>
-        <div className='bottom-path-div'>{
-          props.currPath.length>0 && pathTillNow()
-        }</div>
+        <div className='bottom-path-div'>
+          {props.directory.currPath.length>0 && pathTillNow()}
+        </div>
         <hr/>
     </div>
   )

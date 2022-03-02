@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Form.scss';
 import { USER_PIN } from '../../localStorageKeys';
 
+// ========================== FINE ==============================
 const Form = (props) => {
   const [pins,setPins]=useState({
     newPin:"",
@@ -48,8 +49,8 @@ const Form = (props) => {
     <p>Set your account pin</p>
     </div>
       <form className="home-form" onSubmit={handleSubmit}>
-          <input onChange={handlePinChange} type="text" maxLength='4' name="newPin" placeholder="Enter new pin" value={pins.newPin}/>
-          <input onChange={handlePinChange} type="text" maxLength='4' name="confirmPin" placeholder="Confirm new pin" value={pins.confirmPin}/>
+          <input onChange={handlePinChange} type="text" maxLength='4' name="newPin" placeholder="Enter new pin" value={pins.newPin} autoComplete="off" autoFocus/>
+          <input onChange={handlePinChange} type="text" maxLength='4' name="confirmPin" placeholder="Confirm new pin" value={pins.confirmPin} autoComplete="off"/>
           <button type='Submit'>Save Changes</button>
       </form>
     </div>

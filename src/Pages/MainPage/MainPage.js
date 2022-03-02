@@ -23,27 +23,32 @@ const MainPage = (props) => {
   const [showChangePinModal, setShowChangePinModal]=useState(false);
   const [showEditFileModal, setShowEditFileModal]=useState(false);
   const [element,setElement]=useState("");
-  const [filesArr,setFilesArr]=useState([]);
-  const [cS,setCS]=useState(completeStructure);
-  const [render,setRender]=useState(1);
-  const [currPath,setCurrPath]=useState([]);
-  const [currFile, setCurrFile]=useState([]);
-  const [currContent,setCurrContent]=useState("");
+   const [currFile, setCurrFile]=useState({
+     name:"",
+     path:[],
+     content: ""
+   });
+  
+
+  const [directory, setDirectory]= useState({
+    structure : completeStructure,
+    currPath: []
+  });
 
   //==============================USE EFFECT=======================================
 
   useEffect(() => {
-    const localDirectoryStructure = JSON.parse(localStorage.getItem(COMPLETE_STRUCTURE));
-    if (localDirectoryStructure)
+    const structureInfo = JSON.parse(localStorage.getItem(COMPLETE_STRUCTURE));
+    if (structureInfo)
     { 
-      setCS(localDirectoryStructure);
+      setDirectory(structureInfo);
     }
   },[]);
 
   useEffect(() => {
-    localStorage.setItem(COMPLETE_STRUCTURE, JSON.stringify(cS));
-  }, [render,cS]);
-    
+    localStorage.setItem(COMPLETE_STRUCTURE, JSON.stringify(directory));
+  }, [directory]);
+
   //=============================USE EFFECT END======================================
 
 
@@ -57,8 +62,7 @@ const MainPage = (props) => {
     setShowAddFileFolderModal(prevShowAddFileFolderModal=>!prevShowAddFileFolderModal);
   }
 
-  function handleShowChangePinModal(name){
-    setElement(name);
+  function handleShowChangePinModal(){
     setShowChangePinModal(prevShowChangePinModal=>!prevShowChangePinModal);
   }
 
@@ -69,145 +73,150 @@ const MainPage = (props) => {
    // ============================ MODALS SHOW END==================================
 
 
+
+
    // =========================INDEX AND FILES SHOW=================================
-  function showFiles(path){
-    if(path.length===0) return [];
-    let element= cS[path[0]];
-    for(let i=1;i<path.length;i++){
+
+   function changeState(path){
+     let cS=[...directory.structure];
+     let element=cS[path[0]];
+     for(let i=1;i<path.length;i++){
        element=element.childNodes[path[i]];
+     }
+     element.isActive=!element.isActive;
+
+     setDirectory({
+        structure: cS,
+        currPath: path
+     });
+   }
+
+
+   function makeActive(path){
+    let cS=[...directory.structure];
+    let element=cS[path[0]];
+    element.isActive=true;
+    for(let i=1;i<path.length;i++){
+      element=element.childNodes[path[i]];
+      element.isActive=true;
     }
-    let temp2=[];
-    element.childNodes.forEach(item => {
-      if(!item.isFolder)
-        temp2.push(<FileElement name={item.name} key={item.id} content={item.content} path={item.path} handleFileOpen={handleFileOpen}/>)
+    
+    setDirectory({
+       structure: cS,
+       currPath: path
     });
-
-    return temp2;
   }
 
-  function changeState(path){
-   // console.log(path);
-    setCurrPath(path);
-    setCS((prevCS)=>{
-      let element=prevCS[path[0]];
+
+   function showFiles(path){
+     let filesArr=[];
+     if(path.length!==0){
+      let element=directory.structure[path[0]];
       for(let i=1;i<path.length;i++){
-         element.isActive=true;
-         element=element.childNodes[path[i]];
+        element=element.childNodes[path[i]];
       }
-      element.isActive=(!element.isActive);
-      //console.log(prevCS);
-      return prevCS;
-    })
 
-    setRender(prev=>{
-      if(prev>10) 
-        return 1;
-      return prev+1;
-    });
-    
+      element.childNodes.forEach(item=>{
+        if(!item.isFolder){
+          filesArr.push(<FileElement path={item.path} name={item.name} key={item.id} content={item.content} editFile={editFile}/>)
+        }
+      })
 
-    let temp=showFiles(path);
-   // console.log(temp);
-    setFilesArr(temp);
-    
-    console.log(currPath);
-  }
+      return filesArr;
+     }
+   }
+  
 
   // =========================INDEX AND FILES SHOW END=================================
 
 
+
+
+
+
   // ========================ADDING FILES FOLDERS=====================================
 
-  function makeElement(elementName, isFolder){
-    setCS((prevCS)=>{
-      let element=prevCS[currPath[0]];
-      for(let i=1;i<currPath.length;i++){
-         element=element.childNodes[currPath[i]];
+  function makeElement(isFolder, elementName){
+    let cS=[...directory.structure];
+    if(directory.currPath.length!==0){
+      let element=cS[directory.currPath[0]];
+      for(let i=1;i<directory.currPath.length;i++){
+         element=element.childNodes[directory.currPath[i]];
       }
       const elementPath= [...element.path, element.childNodes.length];
       const id=uuidv4(); 
       const newElement=new MakeFileFolder(id,elementName,elementPath, isFolder, " ");
       element.childNodes.push(newElement);
-    //  console.log(prevCS);
-      return prevCS;
-    })
-
-    
-    setRender(prev=>{
-      if(prev>10) 
-        return 1;
-      return prev+1;
-    });
-    
-
-    let temp=showFiles(currPath);
-   // console.log(temp);
-    setFilesArr(temp);
-
+      setDirectory((prev)=>{
+        return{
+          ...prev,
+          structure: cS
+        }
+      });
+    } 
   }
+
+  
   // ========================ADDING FILES FOLDERS END=====================================
+
+
+
 
 
   // ============================EDITING FILES========================================
 
-  function handleFileOpen(filePath){
-    let editFilePath=filePath;
-    //console.log(editFilePath);
-    setCurrContent(()=>{
-      let element=cS[filePath[0]];
-      for(let i=1;i<filePath.length;i++){
-         element=element.childNodes[filePath[i]];
-      }
-      return element.content;
+  function editFile(Name,Content,Path){
+    setCurrFile({
+      name: Name,
+      content: Content,
+      path : Path
     });
-    setCurrFile(editFilePath)?handleShowEditFileModal():handleShowEditFileModal();
 
+    handleShowEditFileModal();
   }
 
-  function changeContent(content){
-    setCS((prevCS)=>{
-      let element=cS[currFile[0]];
-      for(let i=1;i<currFile.length;i++){
-         element=element.childNodes[currFile[i]];
+  function makeEdit(path, Content){
+    let cS=[...directory.structure];
+    let element=cS[path[0]];
+    for(let i=1;i<path.length;i++){
+      element=element.childNodes[path[i]];
+    }
+    element.content=Content;
+
+    setDirectory((prev)=>{
+      return{
+        ...prev,
+        structure: cS
       }
-      element.content=content;
-      return prevCS;
-    })
+    });
 
-  //   setRender(prev=>{
-  //     if(prev>10) 
-  //       return 1;
-  //     return prev+1;
-  //   });
-    
+    handleShowEditFileModal();
 
-  //   let temp=showFiles(currPath);
-  //  // console.log(temp);
-  //   setFilesArr(temp);
-    
   }
+
+
   // ==========================EDITING FILES END=======================================
 
   return (
     <div className={isLight?'main-page-div':'main-page-div-dt'}>      
         <div className='left-div-main-page'>
           <Resizable>
-            {render>=0 && <LeftExplorer currPath={currPath} showPinModalFunc={handleShowPinModal} showAddFileFolderModalFunc={handleShowAddFileFolderModal} cS={cS} changeState={changeState}/>}
+            <LeftExplorer showPinModalFunc={handleShowPinModal} showAddFileFolderModalFunc={handleShowAddFileFolderModal} directory={directory} changeState={changeState} />
           </Resizable>
         </div>
         <div className='right-div-main-page'>
           <div>
-            {render>=0 && <Header showAddFileFolderModalFunc={handleShowAddFileFolderModal} currPath={currPath} showChangePinFunc={handleShowChangePinModal} cS={cS}  changeState={changeState} changeTheme={props.changeTheme} />}
+            <Header showAddFileFolderModalFunc={handleShowAddFileFolderModal} showChangePinFunc={handleShowChangePinModal} changeTheme={props.changeTheme} directory={directory} changeState={changeState} makeActive={makeActive}/>
           </div>
           <div>
-            {filesArr}
+            {showFiles(directory.currPath)}
           </div>
         </div>
 
         {showPinModal&&<PinModal showPinModalFunc={handleShowPinModal}/>}
-        {showAddFileFolderModal&&<AddFileFolderModal showAddFileFolderModalFunc={handleShowAddFileFolderModal} element={element} makeElement={makeElement}/>}
+        {showAddFileFolderModal&&<AddFileFolderModal showAddFileFolderModalFunc={handleShowAddFileFolderModal} element={element} makeElement={makeElement} />}
         {showChangePinModal&&<SetNewPinModal showChangePinFunc={handleShowChangePinModal}/>}
-        {showEditFileModal&&<EditFileModal showEditFileModal={handleShowEditFileModal} content={currContent} changeContent={changeContent}/>}
+        {showEditFileModal&&<EditFileModal makeEdit={makeEdit} currFile={currFile} handleShowEditFileModal={handleShowEditFileModal}/>}
 
     </div>
   )
