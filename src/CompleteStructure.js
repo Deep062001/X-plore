@@ -8,7 +8,7 @@ const completeStructure= [
       content: "",
       childNodes: [
         {
-          name: "Hegwid",
+          name: "Hedwig",
           id: 234,
           path: [0,0],
           isFolder: true,
