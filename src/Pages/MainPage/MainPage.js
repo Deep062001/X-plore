@@ -32,7 +32,7 @@ const MainPage = (props) => {
 
   const [directory, setDirectory]= useState({
     structure : completeStructure,
-    currPath: []
+    currPath: [0]
   });
 
   //==============================USE EFFECT=======================================
