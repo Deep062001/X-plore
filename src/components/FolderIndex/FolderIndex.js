@@ -2,6 +2,7 @@ import React, { useContext} from 'react';
 import FolderIndexItem from '../FolderIndexItem/FolderIndexItem';
 import './FolderIndex.scss';
 import context from '../../Context';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 
 // =========== not showing folder white when open initially in first render ==========================
@@ -32,9 +33,11 @@ const FolderIndex = (props) => {
   }
   
   return (
+    <Scrollbars style={{ height: "430px" }}>
     <div className={isLight?'folder-index':'folder-index-dt'}>
         {createIndexCall()}
     </div>
+    </Scrollbars>
   )
 }
 

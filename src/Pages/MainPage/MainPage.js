@@ -13,6 +13,7 @@ import completeStructure from '../../CompleteStructure';
 import MakeFileFolder from '../../csConstructor';
 import context from '../../Context';
 import { COMPLETE_STRUCTURE } from '../../localStorageKeys';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 
 
@@ -208,9 +209,11 @@ const MainPage = (props) => {
           <div>
             <Header showAddFileFolderModalFunc={handleShowAddFileFolderModal} showChangePinFunc={handleShowChangePinModal} changeTheme={props.changeTheme} directory={directory} changeState={changeState} makeActive={makeActive}/>
           </div>
-          <div>
+          <Scrollbars style={{height: "450px"}}>
+          <div className='files-div'>
             {showFiles(directory.currPath)}
           </div>
+          </Scrollbars>
         </div>
 
         {showPinModal&&<PinModal showPinModalFunc={handleShowPinModal}/>}
